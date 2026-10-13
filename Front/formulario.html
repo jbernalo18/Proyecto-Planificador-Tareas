@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ládora</title>
+    <link rel="stylesheet" href="./CSS/formulario.css">
+</head>
+<body>
+
+    <section class="formulario-seccion"> <!--incio seccion formulario-->
+        <div class="formulario-div"> <!---inicio contenedor de formulario-->
+            <form> <!---inicio formulario-->
+                <!--nombre de la atrjeta-->
+             <div class="form-columna-derecha">
+                <div class="form-campo-nombre-tarjeta">
+                    <label for="campo-nombre-tarjeta">NOMBRE DE LA TARJETA</label> 
+                    <!--ingreso de datos-->
+                    <input type="text" id="campo-nombre-tarjeta" name="campo-nombre-tarjeta" placeholder="Nombre de la Tarjeta" required>
+                </div>
+
+                <!---descripcion de la tarjeta-->
+                <div class="form-campo-descripcion-tarjeta">
+                    <label for="campo-descripcion-tarjeta">DESCRIPCIÓN</label> 
+                    <!--ingreso de datos-->
+                    <input type="text" id="campo-descripcion-tarjeta" name="campo-descripcion-tarjeta" placeholder="Descripcion de la Tarjeta" required>
+                </div>
+
+                <!--etiquetas de la tarjeta-->
+                <div class="form-campo-etiquetas-tarjeta">
+                    <label for="campo-descripcion-tarjeta">ETIQUETAS</label> 
+                    <button type="button" id="btn-crear-etiqueta">+ Añadir etiqueta</button>
+                </div>
+             </div>
+             <div class="form-columna-derecha">
+                <div class="form-campo-estado-tarjeta">
+                    <p>Estado</p> <!--nombre de campo-->
+                        <!--radio es para que solo se selecione un estado, si se selecciona otro se desmarca el anterior-->
+                        <label><input type="radio" name="estado-tarjeta" value="pendiente">Pendiente</label>
+                        <label><input type="radio" name="estado-tarjeta" value="en-progreso">En Progreso</label>
+                        <label><input type="radio" name="estado-tarjeta" value="en-revision">En Revisión</label>
+                        <label><input type="radio" name="estado-tarjeta" value="realizado">Realizado</label>
+                </div>   
+                <!--asignacion de la tarjeta-->
+                <div class="form-campo-asignacion-tarjeta">
+                    <label for="campo-asignacion-tarjeta">ASIGNADO A</label>
+                    <select name="campo-asignacion-tarjeta" id="campo-asignacion-tarjeta" required>
+                        <option value="">Selecciona una persona</option>
+                    </select>
+
+                <div class="form-campo-fecha-tarjeta">
+                    <label for="campo-fecha-tarjeta">FECHA</label> 
+                    <!--ingreso de datos-->
+                    <input type="text" id="campo-fecha-tarjeta" name="campo-fecha-tarjeta" placeholder="Fecha de la Tarjeta" required>
+                </div>
+
+                <div class="form-campo-estado-tarjeta">
+                    <p>Prioridad</p> <!--nombre de campo-->
+                        <!--radio es para que solo se selecione un estado, si se selecciona otro se desmarca el anterior-->
+                        <label><input type="radio" name="prioridad-tarjeta" value="alta">ALTA</label>
+                        <label><input type="radio" name="prioridad-tarjeta" value="media">MEDIA</label>
+                        <label><input type="radio" name="prioridad-tarjeta" value="baja">BAJA</label>
+                </div>  
+                </div>
+             </div>   
+            </form>
+        </div>
+    </section>
+</body>
+</html>
