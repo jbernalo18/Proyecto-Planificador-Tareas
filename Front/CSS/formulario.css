@@ -287,6 +287,20 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{
 
 .form-acciones button:focus-visible{outline:none;box-shadow:0 0 0 3px var(--ring)}
 
+/* mensajes de validacion debajo de cada campo */
+.mensaje-campo{
+  display:block;
+  font-size:.8125rem;
+  margin-top:-14px; /* anula casi todo el gap de 20px y deja 6px entre el campo y el mensaje */
+}
+
+/* si el mensaje esta vacio lo quito para que no deje un hueco de 20px extra */
+.mensaje-campo:empty{
+  display:none;
+}
+.texto-error{color:#B3261E} /* rojo para los errores */
+.texto-exito{color:#1E7A4C} /* verde cuando el campo esta bien */
+
 /* ---------- celular ---------- */
 @media (max-width:760px){
   /*cuando la pantalla es pequeña pongo las dos columnas una debajo de la otra*/

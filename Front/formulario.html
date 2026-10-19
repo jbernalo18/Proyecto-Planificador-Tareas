@@ -28,6 +28,7 @@
                     <!--ingreso de datos-->
                     <input type="text" id="campo-nombre-tarjeta" name="campo-nombre-tarjeta" placeholder="Ej. Diseñar la vista de tareas" required>
                 </div>
+                <p class="mensaje-campo" id="error-nombre"></p>
 
                 <!---descripcion de la tarjeta-->
                 <div class="form-campo-descripcion-tarjeta">
@@ -35,6 +36,7 @@
                     <!--ingreso de datos-->
                     <textarea id="campo-descripcion-tarjeta" name="campo-descripcion-tarjeta" placeholder="Agrega una descripción más detallada…"></textarea>
                 </div>
+                <p class="mensaje-campo" id="error-descripcion"></p>
 
                 <!--etiquetas de la tarjeta-->
                 <div class="form-campo-etiquetas-tarjeta">
@@ -51,19 +53,20 @@
                         <label><input type="radio" name="estado-tarjeta" value="en-revision">En revisión</label>
                         <label><input type="radio" name="estado-tarjeta" value="realizado">Hecho</label>
                 </div>   
+                <p class="mensaje-campo" id="error-estado"></p>
                 <!--asignacion de la tarjeta-->
                 <div class="form-campo-asignacion-tarjeta">
-                    <label for="campo-asignacion-tarjeta">Asignado a</label>
-                    <select name="campo-asignacion-tarjeta" id="campo-asignacion-tarjeta" required>
-                        <option value="">Selecciona una persona</option>
-                    </select>
+                <label for="campo-asignacion-tarjeta">Asignado a</label>
+                <input type="text" id="campo-asignacion-tarjeta" name="campo-asignacion-tarjeta" placeholder="Ej. María Fernanda López" required>
                 </div>
+                <p class="mensaje-campo" id="error-asignado"></p>
 
                 <div class="form-campo-fecha-tarjeta">
                     <label for="campo-fecha-tarjeta">Fecha límite</label> 
                     <!--ingreso de datos-->
                     <input type="date" id="campo-fecha-tarjeta" name="campo-fecha-tarjeta" required>
                 </div>
+                <p class="mensaje-campo" id="error-fecha"></p>
 
                 <!--la clase prio es la que pone los puntos de color en la prioridad-->
                 <div class="form-campo-estado-tarjeta prio">
@@ -83,5 +86,6 @@
             </form>
         </div>
     </section>
+  <script src="../Front/JS/validaciones.js"></script>
 </body>
 </html>
