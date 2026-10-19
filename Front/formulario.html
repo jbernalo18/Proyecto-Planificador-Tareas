@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,25 +10,35 @@
 
     <section class="formulario-seccion"> <!--incio seccion formulario-->
         <div class="formulario-div"> <!---inicio contenedor de formulario-->
+
+            <!--cabecera con logo y titulo-->
+            <div class="form-cabecera">
+                <img class="form-logo" src="../assets/imagenes/cristal-logo.svg" alt="Logo Ládora">
+                <div>
+                    <h1>Nueva tarjeta</h1>
+                    <p>Completa los datos para crear la tarjeta.</p>
+                </div>
+            </div>
+
             <form> <!---inicio formulario-->
                 <!--nombre de la atrjeta-->
-             <div class="form-columna-derecha">
+             <div class="form-columna-izquierda">
                 <div class="form-campo-nombre-tarjeta">
-                    <label for="campo-nombre-tarjeta">NOMBRE DE LA TARJETA</label> 
+                    <label for="campo-nombre-tarjeta">Nombre <span class="req" aria-hidden="true">*</span></label> 
                     <!--ingreso de datos-->
-                    <input type="text" id="campo-nombre-tarjeta" name="campo-nombre-tarjeta" placeholder="Nombre de la Tarjeta" required>
+                    <input type="text" id="campo-nombre-tarjeta" name="campo-nombre-tarjeta" placeholder="Ej. Diseñar la vista de tareas" required>
                 </div>
 
                 <!---descripcion de la tarjeta-->
                 <div class="form-campo-descripcion-tarjeta">
-                    <label for="campo-descripcion-tarjeta">DESCRIPCIÓN</label> 
+                    <label for="campo-descripcion-tarjeta">Descripción</label> 
                     <!--ingreso de datos-->
-                    <input type="text" id="campo-descripcion-tarjeta" name="campo-descripcion-tarjeta" placeholder="Descripcion de la Tarjeta" required>
+                    <textarea id="campo-descripcion-tarjeta" name="campo-descripcion-tarjeta" placeholder="Agrega una descripción más detallada…"></textarea>
                 </div>
 
                 <!--etiquetas de la tarjeta-->
                 <div class="form-campo-etiquetas-tarjeta">
-                    <label for="campo-descripcion-tarjeta">ETIQUETAS</label> 
+                    <label for="btn-crear-etiqueta">Etiquetas</label> 
                     <button type="button" id="btn-crear-etiqueta">+ Añadir etiqueta</button>
                 </div>
              </div>
@@ -36,33 +46,40 @@
                 <div class="form-campo-estado-tarjeta">
                     <p>Estado</p> <!--nombre de campo-->
                         <!--radio es para que solo se selecione un estado, si se selecciona otro se desmarca el anterior-->
-                        <label><input type="radio" name="estado-tarjeta" value="pendiente">Pendiente</label>
-                        <label><input type="radio" name="estado-tarjeta" value="en-progreso">En Progreso</label>
-                        <label><input type="radio" name="estado-tarjeta" value="en-revision">En Revisión</label>
-                        <label><input type="radio" name="estado-tarjeta" value="realizado">Realizado</label>
+                        <label><input type="radio" name="estado-tarjeta" value="pendiente" checked>Por hacer</label>
+                        <label><input type="radio" name="estado-tarjeta" value="en-progreso">En proceso</label>
+                        <label><input type="radio" name="estado-tarjeta" value="en-revision">En revisión</label>
+                        <label><input type="radio" name="estado-tarjeta" value="realizado">Hecho</label>
                 </div>   
                 <!--asignacion de la tarjeta-->
                 <div class="form-campo-asignacion-tarjeta">
-                    <label for="campo-asignacion-tarjeta">ASIGNADO A</label>
+                    <label for="campo-asignacion-tarjeta">Asignado a</label>
                     <select name="campo-asignacion-tarjeta" id="campo-asignacion-tarjeta" required>
                         <option value="">Selecciona una persona</option>
                     </select>
+                </div>
 
                 <div class="form-campo-fecha-tarjeta">
-                    <label for="campo-fecha-tarjeta">FECHA</label> 
+                    <label for="campo-fecha-tarjeta">Fecha límite</label> 
                     <!--ingreso de datos-->
-                    <input type="text" id="campo-fecha-tarjeta" name="campo-fecha-tarjeta" placeholder="Fecha de la Tarjeta" required>
+                    <input type="date" id="campo-fecha-tarjeta" name="campo-fecha-tarjeta" required>
                 </div>
 
-                <div class="form-campo-estado-tarjeta">
+                <!--la clase prio es la que pone los puntos de color en la prioridad-->
+                <div class="form-campo-estado-tarjeta prio">
                     <p>Prioridad</p> <!--nombre de campo-->
                         <!--radio es para que solo se selecione un estado, si se selecciona otro se desmarca el anterior-->
-                        <label><input type="radio" name="prioridad-tarjeta" value="alta">ALTA</label>
-                        <label><input type="radio" name="prioridad-tarjeta" value="media">MEDIA</label>
-                        <label><input type="radio" name="prioridad-tarjeta" value="baja">BAJA</label>
+                        <label><input type="radio" name="prioridad-tarjeta" value="alta">Alta</label>
+                        <label><input type="radio" name="prioridad-tarjeta" value="media" checked>Media</label>
+                        <label><input type="radio" name="prioridad-tarjeta" value="baja">Baja</label>
                 </div>  
-                </div>
              </div>   
+
+             <!--botones de abajo-->
+             <div class="form-acciones">
+                <button type="button" class="btn-cancelar">Cancelar</button>
+                <button type="submit" class="btn-crear">Crear tarjeta</button>
+             </div>
             </form>
         </div>
     </section>
