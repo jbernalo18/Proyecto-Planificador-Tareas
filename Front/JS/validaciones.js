@@ -78,3 +78,28 @@ entradaNombre.addEventListener("blur", revisarNombre);
 entradaDescripcion.addEventListener("blur", revisarDescripcion);
 entradaAsignado.addEventListener("blur", revisarAsignado);
 entradaFecha.addEventListener("blur", revisarFecha);
+
+/**juntar todas las revisiones en una sola funcion*/
+function validateTaskForm () {
+    /*se guardan primero en variables para que se revisen TODOS los campos*/
+    const nombreValidado = revisarNombre();
+    const descripcionValidada = revisarDescripcion();
+    const asignadoValidado = revisarAsignado();
+    const fechaValidada = revisarFecha();
+    const estadoValidado = revisarEstado();
+
+    return nombreValidado && descripcionValidada && asignadoValidado && fechaValidada && estadoValidado;
+}
+
+/**conectar con el formulario*/
+const formularioTarea = document.getElementById("form-principal");
+
+formularioTarea.addEventListener("submit", function (e) {
+    e.preventDefault(); /*evita que la pagina se recargue*/
+
+    if (validateTaskForm() === true) {
+        console.log("Formulario válido: aquí se agregará la tarea");
+    } else {
+        console.log("Formulario inválido: no se agrega la tarea");
+    }
+});
