@@ -1,57 +1,50 @@
 :root{
-      --page:#EEF2F3;
-  --surface:#FFFFFF;
+  --page:#EEF2F3;
   --txt:#1E2A30;
   --muted:#5A6B73;
   --line:#D8E0E3;
-  --field:#F6F8F9;
-  --petroleo:#2E4E5B; --petroleo-dark:#1B3640; --petroleo-soft:#E1E9EC; --petroleo-ink:#1B3640;
-  --gold:#D9A441; --amber:#B9792B; --teal:#5FA79A;
-  --ring:rgba(46,78,91,.3);
+  --borde:#BCC8CD;
+  --petroleo:#2E4E5B;
+  --soft:#E1E9EC;
+  --verde:#1E7A76;
+  --gold:#D9A441;
+  --amber:#B9792B;
+  --teal:#5FA79A;
+  --radio:8px;
 }
 
-
 *{
-  box-sizing:border-box;/* para que el padding y el borde cuenten dentro del tamaño */
+  box-sizing:border-box;
   margin:0;
   padding:0;
 }
 
-html{
-  /* esto ayuda a que el contenido no quede pegado a los bordes del celular */
-  padding-top:env(safe-area-inset-top,0px);
-  padding-bottom:env(safe-area-inset-bottom,0px);
-}
-
 body{
-  font-family:"Segoe UI",system-ui,Arial,sans-serif;
-  font-size:16px;
-  line-height:1.5;
+  font:16px/1.5 "Segoe UI",system-ui,sans-serif;
   color:var(--txt);
   background:var(--page);
 }
 
-/* ---------- la tarjeta grande ---------- */
+/* ---------- tarjeta grande ---------- */
 .formulario-seccion{
   display:flex;
-  justify-content:center; /* centra la tarjeta horizontalmente */
+  justify-content:center;
   padding:40px 16px;
 }
 
 .formulario-div{
-  position:relative;
   width:100%;
-  max-width:960px; /* para que no se estire demasiado en pantallas grandes */
-  background:var(--surface);
+  max-width:960px;
+  overflow:hidden;
+  background:#fff;
   border:1px solid var(--line);
   border-radius:16px;
   box-shadow:0 8px 24px rgba(30,42,48,.08);
-  overflow:hidden; /* para que lo que sobresalga respete los bordes redondeados */
 }
 
-/* esta parte crea la franjita de colores sin tener que poner otro div en el html */
+/* franja de colores de arriba */
 .formulario-div::before{
-  content:""; /* necesario para que aparezca el elemento */
+  content:"";
   display:block;
   height:5px;
   background:linear-gradient(90deg,#26343A,#1F7FB5,#55C7E8,#D9A441,#B9792B);
@@ -60,166 +53,136 @@ body{
 /* ---------- cabecera ---------- */
 .form-cabecera{
   display:flex;
-  align-items:center; /* alinea el logo y el texto por el centro */
+  align-items:center;
   gap:14px;
   padding:24px 32px;
   border-bottom:1px solid var(--line);
 }
 
-/* el logo*/
 .form-logo{
-  height:50px;  
-  width:auto; /* conserva la proporcion de la imagen */
+  height:50px;
 }
 
-.form-cabecera h1{font-size:1.25rem;font-weight:600;line-height:1.3}
-.form-cabecera p{font-size:.875rem;color:var(--muted)}
+.form-cabecera h1{
+  font-size:1.25rem;
+}
 
-/* ---------- las dos columnas ---------- */
+.form-cabecera p{
+  font-size:.875rem;
+  color:var(--muted);
+}
+
+/* ---------- columnas ---------- */
 form{
-  display:grid; /* uso grid para organizar el formulario en columnas */
-  grid-template-columns:1.9fr 1fr; /* la izquierda ocupa mas espacio que la derecha */
-  gap:0;
+  display:grid;
+  grid-template-columns:1.9fr 1fr;
 }
 
-.form-columna-izquierda{
-  display:flex;
-  flex-direction:column; /* los campos quedan uno debajo del otro */
-  gap:20px;
-  padding:28px 32px;
-  min-height:560px; /* para que se vea largo */
-}
-
+.form-columna-izquierda,
 .form-columna-derecha{
   display:flex;
   flex-direction:column;
   gap:20px;
   padding:28px 32px;
-  background:color-mix(in srgb, var(--petroleo-soft) 30%, transparent);
+}
+
+.form-columna-izquierda{
+  min-height:560px;
+}
+
+.form-columna-derecha{
+  background:#F4F7F8;
   border-left:1px solid var(--line);
 }
 
-/* labels */
-label,.form-campo-estado-tarjeta p{
+/* ---------- labels y campos ---------- */
+label,
+.form-campo-estado-tarjeta p{
   display:block;
   font-size:.875rem;
   font-weight:600;
-  color:var(--txt);
   margin-bottom:6px;
 }
 
-.req{color:var(--amber)} /* el asterisquito de campo obligatorio */
-.ayuda{font-size:.8125rem;color:var(--muted);margin-top:6px} /* para poner una aclaracion debajo del campo */
+.req{
+  color:var(--amber);
+}
 
-/* ---------- campos ---------- */
-input[type=text],input[type=date],select,textarea{
-  width:100%; /* todos los campos ocupan el ancho disponible */
+input[type=text],
+input[type=date],
+textarea{
+  width:100%;
   min-height:44px;
   padding:10px 12px;
-  font:inherit; /* para que tengan la misma letra del resto de la pagina */
-  color:var(--txt);
-  background:var(--surface);
-  border:1px solid #BCC8CD;
-  border-radius:8px;
-  transition:border-color .15s,box-shadow .15s; /* hace que el cambio de color sea suave */
+  font:inherit;
+  border:1px solid var(--borde);
+  border-radius:var(--radio);
 }
 
-input::placeholder,textarea::placeholder{color:#7B8A91}
-
-input:hover,select:hover,textarea:hover{border-color:#8FA1A8}
-
-/* cuando uno selecciona un campo con el mouse o el teclado */
-input:focus-visible,select:focus-visible,textarea:focus-visible{
-  outline:none; /* quito el borde que viene por defecto */
-  border-color:var(--petroleo);
-  box-shadow:0 0 0 3px var(--ring); /* pongo un aro para que se note cual campo esta activo */
+.form-campo-nombre-tarjeta input{
+  font-size:1.125rem;
+  font-weight:600;
 }
 
-.form-campo-nombre-tarjeta input{font-size:1.125rem;font-weight:600}
-
-/* descripcion grande, esta parte hace que el textarea pueda crecer con el espacio */
+/* la descripcion se estira para ocupar el espacio libre */
 .form-campo-descripcion-tarjeta{
-  flex:1; /* ocupa el espacio que queda disponible */
+  flex:1;
   display:flex;
   flex-direction:column;
 }
+
 .form-campo-descripcion-tarjeta textarea{
-  flex:1; /* el area de texto tambien se estira para aprovechar ese espacio */
+  flex:1;
   min-height:220px;
-  resize:vertical; /* el usuario puede cambiar la altura pero no el ancho */
+  resize:vertical;
 }
-
-/* ---------- boton de etiqueta ---------- */
-#btn-crear-etiqueta{
-  min-height:40px;
-  padding:8px 14px;
-  font:inherit;
-  font-size:.875rem;
-  font-weight:600;
-  color:var(--petroleo-ink);
-  background:var(--petroleo-soft);
-  border:1px solid transparent;
-  border-radius:8px;
-  cursor:pointer; /* cambia el cursor para mostrar que se puede pulsar */
-  transition:transform .2s ease,box-shadow .2s ease,background .2s ease,border-color .2s ease;
-}
-
-/* cuando paso el mouse cambia el color y se levanta un poquito */
-#btn-crear-etiqueta:hover{
-  color:#14504E;
-  background:linear-gradient(135deg,#D3ECEA,#EAF7F6);
-  border-color:#1E7A76;
-  transform:translateY(-1px); /* lo mueve un pixel hacia arriba */
-  box-shadow:0 4px 12px rgba(30,122,118,.25);
-}
-#btn-crear-etiqueta:active{
-  transform:translateY(0); /* cuando lo presiono vuelve a su sitio */
-  box-shadow:none;
-}
-#btn-crear-etiqueta:focus-visible{outline:none;box-shadow:0 0 0 3px var(--ring)}
 
 /* ---------- estado y prioridad ---------- */
-.form-campo-estado-tarjeta{display:flex;flex-wrap:wrap;gap:8px}
-.form-campo-estado-tarjeta p{width:100%;margin-bottom:0}
+.form-campo-estado-tarjeta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
 
-/* los label se ven como botones aunque en realidad contienen los input */
+.form-campo-estado-tarjeta p{
+  width:100%;
+  margin:0;
+}
+
+/* los label se ven como botones */
 .form-campo-estado-tarjeta label{
   position:relative;
   display:inline-flex;
   align-items:center;
   gap:8px;
   margin:0;
-  min-height:36px;
   padding:6px 12px;
   font-size:.875rem;
   font-weight:500;
-  color:var(--txt);
-  background:var(--surface);
-  border:1px solid #BCC8CD;
-  border-radius:8px;
   cursor:pointer;
-  transition:border-color .15s,background .15s;
-}
-.form-campo-estado-tarjeta label:hover{border-color:var(--petroleo)}
-
-/* escondo el circulito original porque quiero que se vea el label como boton */
-.form-campo-estado-tarjeta input{
-  position:absolute;
-  opacity:0; /* lo hago invisible pero sigue estando en el html */
-  pointer-events:none; /* el click lo recibe el label */
+  background:#fff;
+  border:1px solid var(--borde);
+  border-radius:var(--radio);
 }
 
-/* :has permite cambiar el label cuando su input esta seleccionado */
-.form-campo-estado-tarjeta label:has(input:checked){
-  color:var(--petroleo-ink);
-  font-weight:600;
-  background:var(--petroleo-soft);
+.form-campo-estado-tarjeta label:hover{
   border-color:var(--petroleo);
 }
-/* tambien muestro el foco si se selecciona con el teclado */
-.form-campo-estado-tarjeta label:has(input:focus-visible){box-shadow:0 0 0 3px var(--ring)}
 
-/* untitos de colores de la prioridad, se crean con before sin agregar otro elemento al html */
+.form-campo-estado-tarjeta label:has(input:checked){
+  font-weight:600;
+  background:var(--soft);
+  border-color:var(--petroleo);
+}
+
+/* el circulito original se esconde, el click lo recibe el label */
+.form-campo-estado-tarjeta input{
+  position:absolute;
+  opacity:0;
+  pointer-events:none;
+}
+
+/* puntitos de color de la prioridad */
 .prio label::before{
   content:"";
   width:10px;
@@ -228,41 +191,59 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{
   background:var(--teal);
 }
 
-/* dependiendo del valor del input cambia el color del puntito */
-.prio label:has(input[value=media])::before{background:var(--gold)}
-.prio label:has(input[value=alta])::before{background:var(--amber)}
+.prio label:has(input[value=media])::before{
+  background:var(--gold);
+}
 
-/* ----------botones de abajo ---------- */
+.prio label:has(input[value=alta])::before{
+  background:var(--amber);
+}
+
+/* ---------- botones ---------- */
+button{
+  font:inherit;
+  font-weight:600;
+  border-radius:var(--radio);
+  cursor:pointer;
+  transition:.2s;
+}
+
+#btn-crear-etiqueta{
+  padding:8px 14px;
+  font-size:.875rem;
+  background:var(--soft);
+  border:1px solid transparent;
+}
+
+#btn-crear-etiqueta:hover{
+  background:#D3ECEA;
+  border-color:var(--verde);
+  transform:translateY(-1px);
+  box-shadow:0 4px 12px rgba(30,122,118,.25);
+}
+
 .form-acciones{
-  grid-column:1/-1; /*hace que esta parte ocupe todas las columnas del grid */
+  grid-column:1/-1;
   display:flex;
-  justify-content:flex-end; /* manda los botones a la derecha */
-  align-items:center;
+  justify-content:flex-end;
   gap:12px;
   padding:16px 32px;
   border-top:1px solid var(--line);
-  background:var(--surface);
 }
 
 .form-acciones button{
   min-height:44px;
   padding:10px 22px;
-  font:inherit;
-  font-weight:600;
-  border-radius:8px;
-  cursor:pointer;
-  transition:transform .2s ease,box-shadow .25s ease,background .25s ease,color .2s ease,border-color .2s ease;
 }
 
 .btn-cancelar{
   color:var(--muted);
-  background:transparent;
+  background:none;
   border:1px solid transparent;
 }
-/*el cancelar cambia un poco al pasar el mouse para que se note que es un boton */
+
 .btn-cancelar:hover{
-  color:var(--txt);
-  background:var(--field);
+  background:var(--page);
   border-color:var(--line);
   box-shadow:0 2px 8px rgba(30,42,48,.08);
 }
@@ -272,50 +253,50 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{
   background:var(--petroleo);
   border:1px solid var(--petroleo);
 }
-/*el boton de crear cambia a tonos verdes y se levanta un poco*/
+
 .btn-crear:hover{
-  background:linear-gradient(135deg,#17605E 0%,#1E7A76 55%,#2A8E89 100%);
-  border-color:#17605E;
+  background:var(--verde);
+  border-color:var(--verde);
   transform:translateY(-2px);
-  box-shadow:0 8px 20px rgba(30,122,118,.38),0 0 0 1px rgba(95,179,177,.55);
-}
-.btn-crear:active,
-.btn-cancelar:active{
-  transform:translateY(0);
-  box-shadow:none;
+  box-shadow:0 8px 20px rgba(30,122,118,.38);
 }
 
-.form-acciones button:focus-visible{outline:none;box-shadow:0 0 0 3px var(--ring)}
+/* aro de foco para quien navega con teclado */
+:focus-visible,
+label:has(input:focus-visible){
+  outline:3px solid rgba(46,78,91,.4);
+}
 
-/* mensajes de validacion debajo de cada campo */
+/* ---------- mensajes de validacion ---------- */
 .mensaje-campo{
-  display:block;
   font-size:.8125rem;
-  margin-top:-14px; /* anula casi todo el gap de 20px y deja 6px entre el campo y el mensaje */
+  margin-top:-14px; /* anula casi todo el gap de 20px */
 }
 
-/* si el mensaje esta vacio lo quito para que no deje un hueco de 20px extra */
 .mensaje-campo:empty{
   display:none;
 }
-.texto-error{color:#B3261E} /* rojo para los errores */
-.texto-exito{color:#1E7A4C} /* verde cuando el campo esta bien */
+
+.texto-error{
+  color:#B3261E;
+}
+
+.texto-exito{
+  color:#1E7A4C;
+}
 
 /* ---------- celular ---------- */
 @media (max-width:760px){
-  /*cuando la pantalla es pequeña pongo las dos columnas una debajo de la otra*/
-  form{grid-template-columns:1fr}
-  .form-columna-derecha{border-left:0;border-top:1px solid var(--line)}
-  .form-columna-izquierda{min-height:0} /* quito la altura minima para que no quede espacio de mas */
-
-  .form-cabecera,.form-columna-izquierda,.form-columna-derecha,.form-acciones{
-    padding-left:20px;
-    padding-right:20px; /* reduzco los espacios para que quepa mejor en el celular */
+  form{
+    grid-template-columns:1fr;
   }
-  .form-acciones button{flex:1} /*los botones comparten el espacio disponible*/
-}
 
-/* si la persona prefiere menos animaciones las desactivo */
-@media (prefers-reduced-motion:reduce){
-  *{transition:none!important} /* !important hace que esta regla tenga prioridad sobre las transiciones */
+  .form-columna-izquierda{
+    min-height:0;
+  }
+
+  .form-columna-derecha{
+    border-left:0;
+    border-top:1px solid var(--line);
+  }
 }
