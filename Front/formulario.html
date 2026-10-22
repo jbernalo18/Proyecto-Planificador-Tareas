@@ -48,10 +48,10 @@
                 <div class="form-campo-estado-tarjeta">
                     <p>Estado</p> <!--nombre de campo-->
                         <!--radio es para que solo se selecione un estado, si se selecciona otro se desmarca el anterior-->
-                        <label><input type="radio" name="estado-tarjeta" value="pendiente" checked>Por hacer</label>
-                        <label><input type="radio" name="estado-tarjeta" value="en-progreso">En proceso</label>
-                        <label><input type="radio" name="estado-tarjeta" value="en-revision">En revisión</label>
-                        <label><input type="radio" name="estado-tarjeta" value="realizado">Hecho</label>
+                        <label><input type="radio" name="estado-tarjeta" value="POR HACER" checked>Por hacer</label>
+                        <label><input type="radio" name="estado-tarjeta" value="EN PROCESO">En proceso</label>
+                        <label><input type="radio" name="estado-tarjeta" value="REVISIÓN">En revisión</label>
+                        <label><input type="radio" name="estado-tarjeta" value="HECHO">Hecho</label>
                 </div>   
                 <p class="mensaje-campo" id="error-estado"></p>
                 <!--asignacion de la tarjeta-->
@@ -68,13 +68,13 @@
                 </div>
                 <p class="mensaje-campo" id="error-fecha"></p>
 
-                <!--la clase prio es la que pone los puntos de color en la prioridad-->
+                <!--la clase prio es la que pone los puntos de color en la prioridad--->
                 <div class="form-campo-estado-tarjeta prio">
                     <p>Prioridad</p> <!--nombre de campo-->
                         <!--radio es para que solo se selecione un estado, si se selecciona otro se desmarca el anterior-->
-                        <label><input type="radio" name="prioridad-tarjeta" value="alta">Alta</label>
-                        <label><input type="radio" name="prioridad-tarjeta" value="media" checked>Media</label>
-                        <label><input type="radio" name="prioridad-tarjeta" value="baja">Baja</label>
+                            <label><span class="punto punto-alta"></span><input type="radio" name="prioridad-tarjeta" value="alta">Alta</label>
+                            <label><span class="punto punto-media"></span><input type="radio" name="prioridad-tarjeta" value="media" checked>Media</label>
+                            <label><span class="punto punto-baja"></span><input type="radio" name="prioridad-tarjeta" value="baja">Baja</label>
                 </div>  
              </div>   
 
@@ -86,6 +86,13 @@
             </form>
         </div>
     </section>
-  <script src="../Front/JS/validaciones.js"></script>
-</body>
+
+
+                <!--tareas creadas-->
+            <section class="tareas-seccion">
+                <h2 class="tareas-titulo">Tareas</h2>
+                <div id="contenedor-tareas" class="contenedor-tareas"></div>
+            </section>
+
+        <script type="module" src="./JS/main.js"></script></body>
 </html>

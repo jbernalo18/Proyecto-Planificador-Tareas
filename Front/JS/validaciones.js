@@ -1,3 +1,5 @@
+
+
 /**reglas*/
 const minNombre = 8;
 const minDescripcion = 15;
@@ -80,7 +82,7 @@ entradaAsignado.addEventListener("blur", revisarAsignado);
 entradaFecha.addEventListener("blur", revisarFecha);
 
 /**juntar todas las revisiones en una sola funcion*/
-function validateTaskForm () {
+export function ValidarFormulario() {
     /*se guardan primero en variables para que se revisen TODOS los campos*/
     const nombreValidado = revisarNombre();
     const descripcionValidada = revisarDescripcion();

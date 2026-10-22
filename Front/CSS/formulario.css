@@ -183,23 +183,21 @@ textarea{
 }
 
 /* puntitos de color de la prioridad */
-.prio label::before{
-  content:"";
+.punto{
   width:10px;
   height:10px;
   border-radius:50%;
-  background:var(--teal);
 }
-
-.prio label:has(input[value=media])::before{
-  background:var(--gold);
+.punto-alta{
+  background:var(--amber)
 }
-
-.prio label:has(input[value=alta])::before{
-  background:var(--amber);
+.punto-media{
+  background:var(--gold)
 }
-
-/* ---------- botones ---------- */
+.punto-baja{
+  background:var(--teal)
+}
+/*---------- botones ----------*/
 button{
   font:inherit;
   font-weight:600;
@@ -261,13 +259,9 @@ button{
   box-shadow:0 8px 20px rgba(30,122,118,.38);
 }
 
-/* aro de foco para quien navega con teclado */
-:focus-visible,
-label:has(input:focus-visible){
-  outline:3px solid rgba(46,78,91,.4);
-}
 
-/* ---------- mensajes de validacion ---------- */
+
+/*----------mensajes de validacion----------*/
 .mensaje-campo{
   font-size:.8125rem;
   margin-top:-14px; /* anula casi todo el gap de 20px */
@@ -285,7 +279,25 @@ label:has(input:focus-visible){
   color:#1E7A4C;
 }
 
-/* ---------- celular ---------- */
+
+
+/* zona donde salen las tareas */
+.tareas-seccion{
+  max-width:960px;
+  margin:0 auto;
+  padding:0 16px 40px;
+}
+.tareas-titulo{
+  font-size:1.25rem;
+  margin-bottom:16px;
+}
+.contenedor-tareas{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:16px;
+}
+
+/*---------- celular ----------*/
 @media (max-width:760px){
   form{
     grid-template-columns:1fr;
