@@ -25,11 +25,21 @@ body{
   background:var(--page);
 }
 
-/* ---------- tarjeta grande ---------- */
+/*-------formulario----------*/
 .formulario-seccion{
-  display:flex;
+  position:fixed;
+  inset:0;
+  background:rgba(30,42,48,.6);
+  display:none;
   justify-content:center;
-  padding:40px 16px;
+  align-items:flex-start;
+  padding:5vh 16px;
+  overflow-y:auto;
+  z-index:100;
+}
+
+.formulario-seccion.abierta{
+  display:flex;
 }
 
 .formulario-div{
@@ -137,7 +147,7 @@ textarea{
   resize:vertical;
 }
 
-/* ---------- estado y prioridad ---------- */
+/* ----------estad prioridad---------- */
 .form-campo-estado-tarjeta{
   display:flex;
   flex-wrap:wrap;
@@ -296,6 +306,23 @@ button{
   grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
   gap:16px;
 }
+
+/*estilos de las tarjetas*/
+.tarjta-tarea {
+  display: flex;
+  background:linear-gradient(136deg,#26343A,#1F7FB5,#55C7E8,#D9A441,#B9792B);
+  border-radius: 16px;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px 14px;
+
+  border: 1px solid var(--gold);
+  
+}
+
+
+
+
 
 /*---------- celular ----------*/
 @media (max-width:760px){

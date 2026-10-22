@@ -1,11 +1,24 @@
 import { TaskManager } from "./taskManager.js";
-import { ValidarFormulario } from "./validaciones.js";
 import { pintarTarjeta } from "./dom.js";
+import { ValidarFormulario, limpiarMensajes } from "./validaciones.js";
 
 
 const gestorTareas = new TaskManager();
 const formularioTarea = document.getElementById("form-principal");
 const contenedorTareas = document.getElementById("contenedor-tareas");
+const seccionFormulario = document.querySelector(".formulario-seccion");
+const btnAbrirFormulario = document.getElementById("btn-abrir-formulario");
+const btnCerrarFormulario = document.getElementById("btn-cancelar");
+
+btnAbrirFormulario.addEventListener("click",function () {
+    seccionFormulario.classList.add("abierta");
+});
+
+btnCerrarFormulario.addEventListener("click",function(){
+    seccionFormulario.classList.remove("abierta");
+    formularioTarea.reset();
+    limpiarMensajes();
+});
 
 formularioTarea.addEventListener("submit", function (e) {
     e.preventDefault(); //evita que la pagina se recargue
@@ -22,6 +35,9 @@ formularioTarea.addEventListener("submit", function (e) {
         //el gestor coloca el ID y guarda la atrea
         const tareaGuardada= gestorTareas.agregarTarea(nuevaTarea);
         contenedorTareas.append(pintarTarjeta(tareaGuardada));
+        seccionFormulario.classList.remove("abierta");
+        formularioTarea.reset();
+        limpiarMensajes();
         console.log("Tarea guardada:", tareaGuardada);
         console.table(gestorTareas.getTodasTareas());
 

@@ -93,3 +93,13 @@ export function ValidarFormulario() {
     return nombreValidado && descripcionValidada && asignadoValidado && fechaValidada && estadoValidado;
 }
 
+
+/**borra los mensajes de validacion*/
+export function limpiarMensajes() {
+    const mensajes = [errorNombre, errorDescripcion, errorAsignado, errorFecha, errorEstado];
+
+    mensajes.forEach(function (mensaje) {
+        mensaje.textContent = "";
+        mensaje.classList.remove("texto-error", "texto-exito");
+    });
+}
