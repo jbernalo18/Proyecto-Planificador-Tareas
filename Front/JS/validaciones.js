@@ -93,15 +93,3 @@ export function ValidarFormulario() {
     return nombreValidado && descripcionValidada && asignadoValidado && fechaValidada && estadoValidado;
 }
 
-/**conectar con el formulario*/
-const formularioTarea = document.getElementById("form-principal");
-
-formularioTarea.addEventListener("submit", function (e) {
-    e.preventDefault(); /*evita que la pagina se recargue*/
-
-    if (validateTaskForm() === true) {
-        console.log("Formulario válido: aquí se agregará la tarea");
-    } else {
-        console.log("Formulario inválido: no se agrega la tarea");
-    }
-});
