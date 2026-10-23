@@ -34,7 +34,7 @@ button{
   transition:0.2s;
 }
 
-/*-------formulario (ventana)----------*/
+/*formulario  ventana*/
 .formulario-seccion{
   position:fixed;
   inset:0;
@@ -61,7 +61,7 @@ button{
   box-shadow:0 8px 24px color-mix(in srgb, var(--texto) 8%, transparent);
 }
 
-/* franja de colores de arriba */
+/*franja de colores de arrib*/
 .formulario-div::before{
   content:"";
   display:block;
@@ -69,7 +69,7 @@ button{
   background:linear-gradient(90deg,#26343A,#1F7FB5,#55C7E8,#D9A441,#B9792B);
 }
 
-/*---------- cabecera ----------*/
+/*cabecera*/
 .form-cabecera{
   display:flex;
   align-items:center;
@@ -91,7 +91,7 @@ button{
   color:var(--texto-suave);
 }
 
-/*---------- columnas ----------*/
+/*columnas*/
 form{
   display:grid;
   grid-template-columns:1.9fr 1fr;
@@ -138,6 +138,16 @@ textarea{
   border-radius:var(--radio);
 }
 
+input[type=text]:focus,
+input[type=date]:focus,
+textarea:focus{
+  outline:none;
+  padding:9px 11px;
+  border:1.8px solid transparent;
+  background:
+    linear-gradient(#fff,#fff) padding-box,
+    linear-gradient(135deg,#26343A,#55C7E8,#D9A441,#967BB6) border-box;
+}
 .form-campo-nombre-tarjeta input{
   font-size:1.1rem;
   font-weight:300;
@@ -156,7 +166,7 @@ textarea{
   resize:vertical;
 }
 
-/*---------- estado y prioridad ----------*/
+/*estado y prioridad*/
 .form-campo-estado-tarjeta{
   display:flex;
   flex-wrap:wrap;
@@ -200,7 +210,7 @@ textarea{
   pointer-events:none;
 }
 
-/* puntitos de la prioridad */
+/* puntitos de la prioridad*/
 .punto{
   width:10px;
   height:10px;
@@ -210,7 +220,7 @@ textarea{
 .punto-media{background:var(--dorado)}
 .punto-baja{background:var(--verde-agua)}
 
-/*---------- botones ----------*/
+/*botones*/
 #btn-crear-etiqueta{
   padding:8px 14px;
   font-size:0.8rem;
@@ -263,8 +273,8 @@ textarea{
   box-shadow:0 8px 20px color-mix(in srgb, var(--turquesa) 38%, transparent);
 }
 
-/*---------- mensajes de validacion ----------*/
-/* sube el mensaje para que quede pegado al campo (compensa el gap de 20px) */
+/*mensajes de validacion*/
+/* sube el mensaje para que quede pegado al campo */
 .mensaje-campo{
   margin-top:-14px;
   font-size:0.8rem;
@@ -282,7 +292,7 @@ textarea{
   color:#1E7A4C;
 }
 
-/* zona donde salen las tareas */
+/* donde salen las tareas*/
 .tareas-seccion{
   max-width:960px;
   margin:0 auto;
@@ -300,7 +310,7 @@ textarea{
   gap:16px;
 }
 
-/*---------- tarjetas ----------*/
+/*tarjetas*/
 .tarjta-tarea{
   display:flex;
   align-items:flex-start;
@@ -347,8 +357,7 @@ textarea{
   color:#44555D;
 }
 
-/* por ahora la descripcion no se ve en la tarjeta */
-  .tarjeta-descripcion{
+.tarjeta-descripcion{
   white-space:nowrap; /*obligamos al texto a quedarse en una linea*/
   overflow:hidden; /*ocultamos lo que sobra*/
   text-overflow:ellipsis;/*pnemos puntosuspensivos*/
@@ -413,7 +422,7 @@ textarea{
 
 
 
-/*---------- celular ----------*/
+/*celular */
 @media (max-width:760px){
   form{
     grid-template-columns:1fr;
