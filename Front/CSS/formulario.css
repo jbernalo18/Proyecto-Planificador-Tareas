@@ -1,15 +1,16 @@
 :root{
-  --page:#EEF2F3;
-  --txt:#1E2A30;
-  --muted:#5A6B73;
-  --line:#D8E0E3;
-  --borde:#BCC8CD;
+  --fondo-pagina:#EEF2F3;
+  --texto:#1E2A30;
+  --texto-suave:#5A6B73;
+  --linea:#D8E0E3;
+  --borde-campo:#BCC8CD;
   --petroleo:#2E4E5B;
-  --soft:#E1E9EC;
-  --verde:#1E7A76;
-  --gold:#D9A441;
-  --amber:#B9792B;
-  --teal:#5FA79A;
+  --petroleo-suave:#E1E9EC;
+  --turquesa:#1E7A76;
+  --verde-agua:#5FA79A;
+  --dorado:#D9A441;
+  --ambar:#B9792B;
+  --rojo:#B3261E;
   --radio:8px;
 }
 
@@ -21,19 +22,27 @@
 
 body{
   font:16px/1.5 "Segoe UI",system-ui,sans-serif;
-  color:var(--txt);
-  background:var(--page);
+  color:var(--texto);
+  background:var(--fondo-pagina);
 }
 
-/*-------formulario----------*/
+button{
+  font:inherit;
+  font-weight:600;
+  border-radius:var(--radio);
+  cursor:pointer;
+  transition:.2s;
+}
+
+/*-------formulario (ventana)----------*/
 .formulario-seccion{
   position:fixed;
   inset:0;
-  background:rgba(30,42,48,.6);
   display:none;
   justify-content:center;
   align-items:flex-start;
-  padding:5vh 16px;
+  padding:8px 16px;
+  background:color-mix(in srgb, var(--texto) 60%, transparent);
   overflow-y:auto;
   z-index:100;
 }
@@ -47,9 +56,9 @@ body{
   max-width:960px;
   overflow:hidden;
   background:#fff;
-  border:1px solid var(--line);
+  border:1px solid var(--linea);
   border-radius:16px;
-  box-shadow:0 8px 24px rgba(30,42,48,.08);
+  box-shadow:0 8px 24px color-mix(in srgb, var(--texto) 8%, transparent);
 }
 
 /* franja de colores de arriba */
@@ -60,13 +69,13 @@ body{
   background:linear-gradient(90deg,#26343A,#1F7FB5,#55C7E8,#D9A441,#B9792B);
 }
 
-/* ---------- cabecera ---------- */
+/*---------- cabecera ----------*/
 .form-cabecera{
   display:flex;
   align-items:center;
   gap:14px;
-  padding:24px 32px;
-  border-bottom:1px solid var(--line);
+  padding:13px 24px;
+  border-bottom:1px solid var(--linea);
 }
 
 .form-logo{
@@ -79,10 +88,10 @@ body{
 
 .form-cabecera p{
   font-size:.875rem;
-  color:var(--muted);
+  color:var(--texto-suave);
 }
 
-/* ---------- columnas ---------- */
+/*---------- columnas ----------*/
 form{
   display:grid;
   grid-template-columns:1.9fr 1fr;
@@ -97,25 +106,25 @@ form{
 }
 
 .form-columna-izquierda{
-  min-height:560px;
+  min-height:450px;
 }
 
 .form-columna-derecha{
-  background:#F4F7F8;
-  border-left:1px solid var(--line);
+  background:color-mix(in srgb, var(--verde-agua) 3%, transparent);
+  border-left:1px solid var(--linea);
 }
 
-/* ---------- labels y campos ---------- */
+/*---------- campos ----------*/
 label,
 .form-campo-estado-tarjeta p{
   display:block;
+  margin-bottom:6px;
   font-size:.875rem;
   font-weight:600;
-  margin-bottom:6px;
 }
 
 .req{
-  color:var(--amber);
+  color:var(--ambar);
 }
 
 input[type=text],
@@ -125,16 +134,16 @@ textarea{
   min-height:44px;
   padding:10px 12px;
   font:inherit;
-  border:1px solid var(--borde);
+  border:1px solid var(--borde-campo);
   border-radius:var(--radio);
 }
 
 .form-campo-nombre-tarjeta input{
-  font-size:1.125rem;
-  font-weight:600;
+  font-size:1.1rem;
+  font-weight:300;
 }
 
-/* la descripcion se estira para ocupar el espacio libre */
+/* la descripcion se estira y ocupa el espacio que sobra */
 .form-campo-descripcion-tarjeta{
   flex:1;
   display:flex;
@@ -143,11 +152,11 @@ textarea{
 
 .form-campo-descripcion-tarjeta textarea{
   flex:1;
-  min-height:220px;
+  min-height:170px;
   resize:vertical;
 }
 
-/* ----------estad prioridad---------- */
+/*---------- estado y prioridad ----------*/
 .form-campo-estado-tarjeta{
   display:flex;
   flex-wrap:wrap;
@@ -159,7 +168,6 @@ textarea{
   margin:0;
 }
 
-/* los label se ven como botones */
 .form-campo-estado-tarjeta label{
   position:relative;
   display:inline-flex;
@@ -169,10 +177,10 @@ textarea{
   padding:6px 12px;
   font-size:.875rem;
   font-weight:500;
-  cursor:pointer;
   background:#fff;
-  border:1px solid var(--borde);
+  border:1px solid var(--borde-campo);
   border-radius:var(--radio);
+  cursor:pointer;
 }
 
 .form-campo-estado-tarjeta label:hover{
@@ -181,53 +189,40 @@ textarea{
 
 .form-campo-estado-tarjeta label:has(input:checked){
   font-weight:600;
-  background:var(--soft);
+  background:color-mix(in srgb, var(--petroleo) 20%, transparent);
   border-color:var(--petroleo);
 }
 
-/* el circulito original se esconde, el click lo recibe el label */
+/* el circulito del radio se esconde, el click lo recibe el label */
 .form-campo-estado-tarjeta input{
   position:absolute;
   opacity:0;
   pointer-events:none;
 }
 
-/* puntitos de color de la prioridad */
+/* puntitos de la prioridad */
 .punto{
   width:10px;
   height:10px;
   border-radius:50%;
 }
-.punto-alta{
-  background:var(--amber)
-}
-.punto-media{
-  background:var(--gold)
-}
-.punto-baja{
-  background:var(--teal)
-}
-/*---------- botones ----------*/
-button{
-  font:inherit;
-  font-weight:600;
-  border-radius:var(--radio);
-  cursor:pointer;
-  transition:.2s;
-}
+.punto-alta{background:var(--ambar)}
+.punto-media{background:var(--dorado)}
+.punto-baja{background:var(--verde-agua)}
 
+/*---------- botones ----------*/
 #btn-crear-etiqueta{
   padding:8px 14px;
   font-size:.875rem;
-  background:var(--soft);
+  background:var(--petroleo-suave);
   border:1px solid transparent;
 }
 
 #btn-crear-etiqueta:hover{
   background:#D3ECEA;
-  border-color:var(--verde);
+  border-color:var(--turquesa);
   transform:translateY(-1px);
-  box-shadow:0 4px 12px rgba(30,122,118,.25);
+  box-shadow:0 4px 12px color-mix(in srgb, var(--turquesa) 25%, transparent);
 }
 
 .form-acciones{
@@ -236,7 +231,7 @@ button{
   justify-content:flex-end;
   gap:12px;
   padding:16px 32px;
-  border-top:1px solid var(--line);
+  border-top:1px solid var(--linea);
 }
 
 .form-acciones button{
@@ -245,15 +240,14 @@ button{
 }
 
 .btn-cancelar{
-  color:var(--muted);
-  background:none;
+  color:var(--texto-suave);
+  background:var(--fondo-pagina);
   border:1px solid transparent;
 }
 
 .btn-cancelar:hover{
-  background:var(--page);
-  border-color:var(--line);
-  box-shadow:0 2px 8px rgba(30,42,48,.08);
+  border-color:var(--linea);
+  transform:translateY(-2px);
 }
 
 .btn-crear{
@@ -263,18 +257,17 @@ button{
 }
 
 .btn-crear:hover{
-  background:var(--verde);
-  border-color:var(--verde);
+  background:var(--turquesa);
+  border-color:var(--turquesa);
   transform:translateY(-2px);
-  box-shadow:0 8px 20px rgba(30,122,118,.38);
+  box-shadow:0 8px 20px color-mix(in srgb, var(--turquesa) 38%, transparent);
 }
 
-
-
-/*----------mensajes de validacion----------*/
+/*---------- mensajes de validacion ----------*/
+/* sube el mensaje para que quede pegado al campo (compensa el gap de 20px) */
 .mensaje-campo{
+  margin-top:-14px;
   font-size:.8125rem;
-  margin-top:-14px; /* anula casi todo el gap de 20px */
 }
 
 .mensaje-campo:empty{
@@ -282,14 +275,12 @@ button{
 }
 
 .texto-error{
-  color:#B3261E;
+  color:var(--rojo);
 }
 
 .texto-exito{
   color:#1E7A4C;
 }
-
-
 
 /* zona donde salen las tareas */
 .tareas-seccion{
@@ -297,32 +288,109 @@ button{
   margin:0 auto;
   padding:0 16px 40px;
 }
+
 .tareas-titulo{
-  font-size:1.25rem;
   margin-bottom:16px;
+  font-size:1.25rem;
 }
+
 .contenedor-tareas{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
   gap:16px;
 }
 
-/*estilos de las tarjetas*/
-.tarjta-tarea {
-  display: flex;
-  background:linear-gradient(136deg,#26343A,#1F7FB5,#55C7E8,#D9A441,#B9792B);
-  border-radius: 16px;
-  flex-direction: column;
-  gap: 10px;
-  padding: 14px 14px;
-
-  border: 1px solid var(--gold);
-  
+/*---------- tarjetas ----------*/
+.tarjta-tarea{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  padding:12px 14px;
+  background:
+    radial-gradient(circle at 85% 10%, color-mix(in srgb, #BED7F0 75%, transparent), transparent 45%),
+    radial-gradient(circle at 12% 92%, color-mix(in srgb, #B4E1E1 55%, transparent), transparent 40%),
+    linear-gradient(135deg, #DAD3EA 0%, #EAE6F2 42%, #F8F2E8 92%);
+  border:1px solid color-mix(in srgb, #fff 90%, transparent);
+  border-radius:11px;
+  box-shadow:0 2px 8px color-mix(in srgb, var(--texto) 8%, transparent);
+  transition:.2s;
 }
 
+.tarjta-tarea:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 18px color-mix(in srgb, var(--texto) 14%, transparent);
+}
 
+.tarjeta-check{
+  flex:none;
+  width:19px;
+  height:19px;
+  margin-top:2px;
+  border:1.5px solid var(--petroleo);
+  border-radius:50%;
+}
 
+.tarjeta-contenido{
+  flex:1;
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
 
+.tarjta-tarea h3{
+  font-size:.85rem;
+}
+
+.tarjta-tarea p{
+  font-size:.75rem;
+  color:#44555D;
+}
+
+/* por ahora la descripcion no se ve en la tarjeta */
+.tarjeta-descripcion{
+  display:none;
+}
+
+.tarjeta-estado{
+  align-self:flex-start;
+  margin-top:4px;
+  padding:1px 10px;
+  font-size:.7rem;
+  font-weight:500;
+  color:#25434F;
+  background:color-mix(in srgb, var(--petroleo) 14%, transparent);
+  border-radius:999px;
+}
+
+.tarjeta-eliminar-estado{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  margin-top:4px;
+}
+
+.tarjeta-eliminar{
+  padding:1px 10px;
+  font-size:.7rem;
+  font-weight:500;
+  color:var(--petroleo);
+  background:color-mix(in srgb, #fff 55%, transparent);
+  border:1px solid color-mix(in srgb, var(--petroleo) 25%, transparent);
+  border-radius:999px;
+}
+
+.tarjeta-eliminar:hover{
+  color:#fff;
+  background:var(--rojo);
+  border-color:var(--rojo);
+}
+
+.tarjeta-eliminar:focus-visible{
+  outline:none;
+  box-shadow:0 0 0 3px color-mix(in srgb, var(--turquesa) 35%, transparent);
+}
 
 /*---------- celular ----------*/
 @media (max-width:760px){
@@ -336,6 +404,6 @@ button{
 
   .form-columna-derecha{
     border-left:0;
-    border-top:1px solid var(--line);
+    border-top:1px solid var(--linea);
   }
 }

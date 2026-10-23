@@ -25,9 +25,9 @@ formularioTarea.addEventListener("submit", function (e) {
 
     if(ValidarFormulario()===true){//validmos el formulario,, si el resultado es true se crea la tarea
         const nuevaTarea={
-            nombre:document.getElementById("campo-nombre-tarjeta").value,
-            descripcion:document.getElementById("campo-descripcion-tarjeta").value,
-            asignadoA: document.getElementById("campo-asignacion-tarjeta").value,
+            nombre:document.getElementById("campo-nombre-tarjeta").value.trim(),
+            descripcion:document.getElementById("campo-descripcion-tarjeta").value.trim(),
+            asignadoA: document.getElementById("campo-asignacion-tarjeta").value.trim(),
             fechaDeEntrega: document.getElementById("campo-fecha-tarjeta").value,
             estado: document.querySelector('input[name="estado-tarjeta"]:checked').value
         }
@@ -38,11 +38,10 @@ formularioTarea.addEventListener("submit", function (e) {
         seccionFormulario.classList.remove("abierta");
         formularioTarea.reset();
         limpiarMensajes();
-        console.log("Tarea guardada:", tareaGuardada);
         console.table(gestorTareas.getTodasTareas());
 
         
     }else{
-        console.log("Formulario inválido: no se agrega la tarea");
+        alert("Formulario inválido: no se agrega la tarea");
     }
 });

@@ -8,6 +8,7 @@ export function pintarTarjeta(tarea){
     //descripcion tarjeta
     const descripcionTarjeta= document.createElement("p");
     descripcionTarjeta.textContent=tarea.descripcion;
+    descripcionTarjeta.classList.add("tarjeta-descripcion");    
     //estado
     const estadoTarjeta= document.createElement("span");
     estadoTarjeta.classList.add("tarjeta-estado");
@@ -19,7 +20,25 @@ export function pintarTarjeta(tarea){
     const fechaEntrega = document.createElement("p");
     fechaEntrega.textContent="Entrega: "+tarea.fechaDeEntrega;
 
-    tarjeta.append(tituloTarjeta,descripcionTarjeta,estadoTarjeta,asignacionTarjeta,fechaEntrega);
+
+    //circulo de seleccion 
+    const circulo = document.createElement("span");
+    circulo.classList.add("tarjeta-check");
+
+    //contenedor que agrupa todo el texto de la tarjeta
+    const contenido = document.createElement("div");
+    contenido.classList.add("tarjeta-contenido");
+ //agergamos el boton de eliminar
+    const botonEliminar=document.createElement("button");
+    botonEliminar.type="button";
+    botonEliminar.classList.add("tarjeta-eliminar");
+    botonEliminar.textContent = "Eliminar";
+         
+    const botonYEstado=document.createElement("div");
+    botonYEstado.classList.add("tarjeta-eliminar-estado");
+    botonYEstado.append(estadoTarjeta, botonEliminar);
+    contenido.append(tituloTarjeta, descripcionTarjeta, asignacionTarjeta, fechaEntrega, botonYEstado);
+    tarjeta.append(circulo, contenido);
     return tarjeta;
 
 
