@@ -8,7 +8,8 @@ export function pintarTarjeta(tarea){
     //descripcion tarjeta
     const descripcionTarjeta= document.createElement("p");
     descripcionTarjeta.textContent=tarea.descripcion;
-    descripcionTarjeta.classList.add("tarjeta-descripcion");    
+    descripcionTarjeta.classList.add("tarjeta-descripcion"); 
+    descripcionTarjeta.title = tarea.descripcion;   
     //estado
     const estadoTarjeta= document.createElement("span");
     estadoTarjeta.classList.add("tarjeta-estado");
@@ -33,7 +34,7 @@ export function pintarTarjeta(tarea){
     botonEliminar.type="button";
     botonEliminar.classList.add("tarjeta-eliminar");
     botonEliminar.textContent = "Eliminar";
-         
+
     const botonYEstado=document.createElement("div");
     botonYEstado.classList.add("tarjeta-eliminar-estado");
     botonYEstado.append(estadoTarjeta, botonEliminar);

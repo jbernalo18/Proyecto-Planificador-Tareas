@@ -10,17 +10,20 @@ const seccionFormulario = document.querySelector(".formulario-seccion");
 const btnAbrirFormulario = document.getElementById("btn-abrir-formulario");
 const btnCerrarFormulario = document.getElementById("btn-cancelar");
 
-btnAbrirFormulario.addEventListener("click",function () {
+
+
+
+btnAbrirFormulario.addEventListener("click",()=>{
     seccionFormulario.classList.add("abierta");
 });
 
-btnCerrarFormulario.addEventListener("click",function(){
+btnCerrarFormulario.addEventListener("click",()=>{
     seccionFormulario.classList.remove("abierta");
     formularioTarea.reset();
     limpiarMensajes();
 });
 
-formularioTarea.addEventListener("submit", function (e) {
+formularioTarea.addEventListener("submit", (e)=> {
     e.preventDefault(); //evita que la pagina se recargue
 
     if(ValidarFormulario()===true){//validmos el formulario,, si el resultado es true se crea la tarea
@@ -44,4 +47,23 @@ formularioTarea.addEventListener("submit", function (e) {
     }else{
         alert("Formulario inválido: no se agrega la tarea");
     }
+
+
+
+
+});
+
+contenedorTareas.addEventListener("click",(e)=>{
+    const botonEliminar=e.target.closest(".tarjeta-eliminar")
+    if(botonEliminar==null){
+        return;//nohacemos nada
+    }
+    console.log("click eneliminar");
+    const tarjeta=botonEliminar.closest(".tarjta-tarea");
+    const idAEliminar=Number(tarjeta.dataset.id);
+    gestorTareas.borrarTarea(idAEliminar); ///eliinamos la tarea del array con el gestor de tareas
+    console.table(gestorTareas.getTodasTareas());
+    tarjeta.remove();//la borramos del DOM
+
+    
 });
