@@ -71,7 +71,7 @@ function revisarAsignado () {
 
 function revisarFecha () {
     const esValido = validarFecha(entradaFecha.value);
-    mostrarResultado(errorFecha, esValido, "✓ Fecha válida", "X Debes elegir una fecha de entrega");
+    mostrarResultado(errorFecha, esValido, "✓ Fecha válida", "X Debes elegir una fecha de entrega válida (hoy o en el futuro)");
     return esValido;
 }
 
