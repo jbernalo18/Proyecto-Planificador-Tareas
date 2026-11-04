@@ -74,7 +74,7 @@ button{
   display:flex;
   align-items:center;
   gap:14px;
-  padding:13px 24px;
+  padding:9px 18px;
   border-bottom:1px solid var(--linea);
 }
 
@@ -102,11 +102,11 @@ form{
   display:flex;
   flex-direction:column;
   gap:20px;
-  padding:28px 32px;
+  padding:24px 32px;
 }
 
 .form-columna-izquierda{
-  min-height:450px;
+  min-height:350px;
 }
 
 .form-columna-derecha{
@@ -149,7 +149,7 @@ textarea:focus{
     linear-gradient(135deg,#26343A,#55C7E8,#D9A441,#967BB6) border-box;
 }
 .form-campo-nombre-tarjeta input{
-  font-size:1.1rem;
+  font-size:1.07rem;
   font-weight:300;
 }
 
@@ -241,6 +241,14 @@ textarea:focus{
   gap:6px;
 }
 
+.etiqueta-tarjeta{
+  display: inline-block;
+  margin-right: 6px;
+  margin-top: 10px;
+  padding: 5px 14px;
+  border-radius: 10px;
+}
+
 .form-acciones{
   grid-column:1/-1;
   display:flex;
@@ -251,8 +259,8 @@ textarea:focus{
 }
 
 .form-acciones button{
-  min-height:44px;
-  padding:10px 22px;
+  min-height:30px;
+  padding:8px 18px;
 }
 
 .btn-cancelar{
