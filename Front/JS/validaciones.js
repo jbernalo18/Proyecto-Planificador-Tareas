@@ -11,9 +11,15 @@ function validarTextoLargo (texto, minimo) {
 }
 
 function validarFecha (fecha) {
+    const añoActual = new Date().getFullYear();
+    const mesActual = new Date().getMonth() + 1; //los meses van de 0 a 11
+    const diaActual = new Date().getDate();
+    const fechaHoy=`${añoActual}-${mesActual.toString().padStart(2, "0")}-${diaActual.toString().padStart(2, "0")}`; //rellenamos el primer espacoi con 0 
+    if(fecha<fechaHoy){
+        return false;
+    }
     return fecha !== ""; /*un input date vacio devuelve texto vacio*/
 }
-
 function validarEstado () {
     /*busca el radio marcado; si no hay ninguno devuelve null*/
     return document.querySelector('input[name="estado-tarjeta"]:checked') !== null;
