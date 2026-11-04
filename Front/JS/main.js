@@ -65,5 +65,45 @@ contenedorTareas.addEventListener("click",(e)=>{
     console.table(gestorTareas.getTodasTareas());
     tarjeta.remove();//la borramos del DOM
 
-    
 });
+
+
+    const botonAnadirEtiq= document.getElementById("btn-crear-etiqueta");
+    botonAnadirEtiq.addEventListener("click",()=>{
+        const ulEtiquetas=document.getElementById("contenedor-etiquetas");
+        const itemEtiqueta=document.createElement("li");
+        itemEtiqueta.classList.add("item-etiqueta");
+        const inputEtiqueta=document.createElement("input");
+        inputEtiqueta.type="text";
+        ulEtiquetas.appendChild(itemEtiqueta);
+        itemEtiqueta.appendChild(inputEtiqueta);
+
+        const inputEtiquetaColor = document.createElement("input");
+        inputEtiquetaColor.type="color";
+        itemEtiqueta.appendChild(inputEtiquetaColor);
+
+
+        const botonEliminarEtiqueta=document.createElement("button");
+        botonEliminarEtiqueta.type="button";
+        botonEliminarEtiqueta.textContent="Eliminar";
+        itemEtiqueta.appendChild(botonEliminarEtiqueta);
+        
+
+        const botonGuardarEtiqueta=document.createElement("button");
+        botonGuardarEtiqueta.type="button";
+        botonGuardarEtiqueta.textContent="Guardar";
+        itemEtiqueta.appendChild(botonGuardarEtiqueta);
+
+        botonGuardarEtiqueta.addEventListener("click",()=>{
+            const nombreEtiqueta=inputEtiqueta.value.trim();
+            const colorEtiqueta=inputEtiquetaColor.value;
+            const etiquetaGuardada=document.createElement("span");
+            etiquetaGuardada.textContent=nombreEtiqueta;
+            etiquetaGuardada.classList.add("etiqueta-tarjeta");
+            etiquetaGuardada.style.backgroundColor=colorEtiqueta;
+            ulEtiquetas.replaceChild(etiquetaGuardada,itemEtiqueta);
+
+        });
+        
+
+    });
