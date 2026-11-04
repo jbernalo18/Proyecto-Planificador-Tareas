@@ -52,6 +52,7 @@ button{
 }
 
 .formulario-div{
+  margin:auto;
   width:100%;
   max-width:960px;
   overflow:hidden;
@@ -74,7 +75,7 @@ button{
   display:flex;
   align-items:center;
   gap:14px;
-  padding:9px 18px;
+  padding:5px 12px;
   border-bottom:1px solid var(--linea);
 }
 
@@ -83,7 +84,7 @@ button{
 }
 
 .form-cabecera h1{
-  font-size:1.25rem;
+  font-size:1.2rem;
 }
 
 .form-cabecera p{
@@ -102,11 +103,11 @@ form{
   display:flex;
   flex-direction:column;
   gap:20px;
-  padding:24px 32px;
+  padding:14px 32px;
 }
 
 .form-columna-izquierda{
-  min-height:350px;
+  min-height:320px;
 }
 
 .form-columna-derecha{
@@ -114,7 +115,6 @@ form{
   border-left:1px solid var(--linea);
 }
 
-/*---------- campos ----------*/
 label,
 .form-campo-estado-tarjeta p{
   display:block;
@@ -162,7 +162,7 @@ textarea:focus{
 
 .form-campo-descripcion-tarjeta textarea{
   flex:1;
-  min-height:170px;
+  min-height:120px;
   resize:vertical;
 }
 
@@ -222,7 +222,7 @@ textarea:focus{
 
 /*botones*/
 #btn-crear-etiqueta{
-  padding:8px 14px;
+  padding:6px 12px;
   font-size:0.8rem;
   background:var(--petroleo-suave);
   border:1px solid transparent;
@@ -238,15 +238,77 @@ textarea:focus{
 .item-etiqueta{
   display:flex;
   align-items:center;
-  gap:6px;
+  gap:10px;
+  margin-top:8px;
+}
+
+.item-etiqueta input[type=text]{
+  min-height:8px;
+  padding:4px 8px;
+  width:150px;
 }
 
 .etiqueta-tarjeta{
+  
   display: inline-block;
   margin-right: 6px;
   margin-top: 10px;
   padding: 5px 14px;
   border-radius: 10px;
+  opacity:0.7;
+}
+
+
+.boton-guardar-etiqueta,
+.boton-eliminar-etiqueta{
+  width:28px;
+  height:28px;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  font-size:14px;
+  line-height:1;
+}
+
+.boton-guardar-etiqueta{
+  color:#fff;
+  background:var(--petroleo);
+  border:1px solid var(--petroleo);
+}
+
+.boton-guardar-etiqueta:hover{
+  background:var(--turquesa);
+  border-color:var(--turquesa);
+}
+
+.boton-eliminar-etiqueta{
+  color:var(--texto-suave);
+  background:transparent;
+  border:1px solid var(--borde-campo);
+}
+
+.boton-eliminar-etiqueta:hover{
+  color:#fff;
+  background:var(--rojo);
+  border-color:var(--rojo);
+}
+
+.boton-color{
+  width:22px;
+  height:22px;
+  padding:0;
+  border-radius:50%;
+  border:1.5px solid var(--borde-campo);
+}
+
+.boton-color:hover{
+  transform:scale(1.15);
+}
+
+.boton-color.elegido{
+  border:2.5px solid var(--petroleo);
 }
 
 .form-acciones{
@@ -259,8 +321,8 @@ textarea:focus{
 }
 
 .form-acciones button{
-  min-height:30px;
-  padding:8px 18px;
+  min-height:20px;
+  padding:6px 12px;
 }
 
 .btn-cancelar{
@@ -286,6 +348,16 @@ textarea:focus{
   transform:translateY(-2px);
   box-shadow:0 8px 20px color-mix(in srgb, var(--turquesa) 38%, transparent);
 }
+
+.boton-color{
+  height:16px;
+  width:16px;
+  border-radius:50%;
+  padding:0;
+  border:1px solid var(--petroleo);
+}
+
+
 
 /*mensajes de validacion*/
 /* sube el mensaje para que quede pegado al campo */

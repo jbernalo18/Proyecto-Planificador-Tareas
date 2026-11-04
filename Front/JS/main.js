@@ -70,18 +70,18 @@ contenedorTareas.addEventListener("click",(e)=>{
 
 
     const paletaEtiqueta = [    
-    "linear-gradient(135deg, #9ADFD8, #A9C8F2, #CBB6F0)", //turquesa azul lavanda
-    "linear-gradient(135deg, #8FE0E6, #F4E1A0, #F7C4A5)", //aqua dorado durazno
-    "linear-gradient(135deg, #A5CBF5, #C3AEF0, #F2B6DA)", // azul violeta rosa
-    "linear-gradient(135deg, #A8E6C9, #8FDCE6, #9CBFF2)", // verde  aqua azul
-    "linear-gradient(135deg, #C4B0F0, #F2B4D6, #F6DD9A)", // violeta rosa dorado
-    "linear-gradient(135deg, #CFDB9C, #F3DC95, #F2B5C6)", // oliva dorado rosa
-    "linear-gradient(135deg, #8EDDD6, #B5E3A8, #F3E096)", // turquesa verde  dorado
-    "linear-gradient(135deg, #9FD0F4, #CDB8F2, #F6BBD8)", // azul cielo lavanda  rosa
-    "linear-gradient(135deg, #EDB0DC, #BDA9EF, #9FC6F3)", // magenta  violeta azul
-    "linear-gradient(135deg, #BADFA8, #93E0D2, #A0C4F4)", // salvia  turquesa  azul
-    "linear-gradient(135deg, #F7CBA0, #F4B1CB, #C8ADEF)", // durazno rosa  violeta
-    "linear-gradient(135deg, #F2DC98, #A5E4CB, #96C6F2)"  //dorado  verde agua  azul
+    "linear-gradient(135deg, #7DB8FF80, #2563EB80)", // azul eléctrico
+    "linear-gradient(135deg, #8FA0F580, #3B3FC980)", // índigo
+    "linear-gradient(135deg, #C0A0F880, #7B3FE080)", // violeta
+    "linear-gradient(135deg, #F2A0DC80, #C73FB580)", // magenta
+    "linear-gradient(135deg, #F7B49A80, #D9705A80)", // cobre
+    "linear-gradient(135deg, #F8C86A80, #C98A1B80)", // ámbar
+    "linear-gradient(135deg, #CFD47A80, #7F8F2B80)", // oliva
+    "linear-gradient(135deg, #8EDCA880, #2E9E6A80)", // jade
+    "linear-gradient(135deg, #6FE0C880, #14907F80)", // turquesa
+    "linear-gradient(135deg, #7FE3F080, #12A4C480)", // aqua
+    "linear-gradient(135deg, #A9D6FF80, #4C8FD680)", // azul hielo
+    "linear-gradient(135deg, #A8B8B080, #5E726880)"  // piedra
     ]
 
 
@@ -106,21 +106,29 @@ contenedorTareas.addEventListener("click",(e)=>{
         itemEtiqueta.appendChild(botonColor);
 
         botonColor.addEventListener("click",()=>{
-            colorElegido=color;
-            console.log(colorElegido);
+        colorElegido=color;
+        const todosLosColores=itemEtiqueta.querySelectorAll(".boton-color");
+        todosLosColores.forEach((boton)=>{
+        boton.classList.remove("elegido");
+        });
+
+        botonColor.classList.add("elegido");
         })
         });
 
+        const botonGuardarEtiqueta=document.createElement("button");
+        botonGuardarEtiqueta.type="button";
+        botonGuardarEtiqueta.classList.add("boton-guardar-etiqueta");
+        botonGuardarEtiqueta.textContent="✓";
+        itemEtiqueta.appendChild(botonGuardarEtiqueta);
+
         const botonEliminarEtiqueta=document.createElement("button");
         botonEliminarEtiqueta.type="button";
-        botonEliminarEtiqueta.textContent="Eliminar";
+        botonEliminarEtiqueta.classList.add("boton-eliminar-etiqueta");
+        botonEliminarEtiqueta.textContent="✕";
         itemEtiqueta.appendChild(botonEliminarEtiqueta);
         
 
-        const botonGuardarEtiqueta=document.createElement("button");
-        botonGuardarEtiqueta.type="button";
-        botonGuardarEtiqueta.textContent="Guardar";
-        itemEtiqueta.appendChild(botonGuardarEtiqueta);
 
         botonGuardarEtiqueta.addEventListener("click",()=>{
             const nombreEtiqueta=inputEtiqueta.value.trim();
