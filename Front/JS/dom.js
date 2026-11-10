@@ -5,6 +5,16 @@ export function pintarTarjeta(tarea){
     //titulo de tarjeta
     const tituloTarjeta = document.createElement("h3");
     tituloTarjeta.textContent = tarea.nombre  ;
+    //etiquetas
+    const contenedorEtiquetas = document.createElement("div");
+    contenedorEtiquetas.classList.add("tarjeta-etiquetas");
+    tarea.etiquetas.forEach((etiqueta) => {
+        const pildora = document.createElement("span");
+        pildora.classList.add("etiqueta-mini");
+        pildora.textContent = etiqueta.nombre;
+        pildora.style.background = etiqueta.color;
+        contenedorEtiquetas.append(pildora);
+    });
     //descripcion tarjeta
     const descripcionTarjeta= document.createElement("p");
     descripcionTarjeta.textContent=tarea.descripcion;
@@ -38,7 +48,7 @@ export function pintarTarjeta(tarea){
     const botonYEstado=document.createElement("div");
     botonYEstado.classList.add("tarjeta-eliminar-estado");
     botonYEstado.append(estadoTarjeta, botonEliminar);
-    contenido.append(tituloTarjeta, descripcionTarjeta, asignacionTarjeta, fechaEntrega, botonYEstado);
+    contenido.append(tituloTarjeta, contenedorEtiquetas, descripcionTarjeta, asignacionTarjeta, fechaEntrega, botonYEstado);
     tarjeta.append(circulo, contenido);
     return tarjeta;
 

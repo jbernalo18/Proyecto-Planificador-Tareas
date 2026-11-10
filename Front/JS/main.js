@@ -22,6 +22,7 @@ btnAbrirFormulario.addEventListener("click",()=>{
 btnCerrarFormulario.addEventListener("click",()=>{
     seccionFormulario.classList.remove("abierta");
     formularioTarea.reset();
+    document.getElementById("contenedor-etiquetas").innerHTML = "";
     limpiarMensajes();
 });
 
@@ -29,12 +30,17 @@ formularioTarea.addEventListener("submit", (e)=> {
     e.preventDefault(); //evita que la pagina se recargue
 
     if(ValidarFormulario()===true){//validmos el formulario,, si el resultado es true se crea la tarea
+        const etiquetas = [];
+        document.querySelectorAll("#contenedor-etiquetas .etiqueta-tarjeta").forEach((span) => {
+        etiquetas.push({ nombre: span.textContent, color: span.style.background });
+        });
         const nuevaTarea={
             nombre:document.getElementById("campo-nombre-tarjeta").value.trim(),
             descripcion:document.getElementById("campo-descripcion-tarjeta").value.trim(),
             asignadoA: document.getElementById("campo-asignacion-tarjeta").value.trim(),
             fechaDeEntrega: document.getElementById("campo-fecha-tarjeta").value,
-            estado: document.querySelector('input[name="estado-tarjeta"]:checked').value
+            estado: document.querySelector('input[name="estado-tarjeta"]:checked').value,
+            etiquetas: etiquetas
         }
 
         //el gestor coloca el ID y guarda la atrea
@@ -42,6 +48,7 @@ formularioTarea.addEventListener("submit", (e)=> {
         columnas[tareaGuardada.estado].append(pintarTarjeta(tareaGuardada));
         seccionFormulario.classList.remove("abierta");
         formularioTarea.reset();
+        document.getElementById("contenedor-etiquetas").innerHTML = "";
         limpiarMensajes();
         console.table(gestorTareas.getTodasTareas());
 
