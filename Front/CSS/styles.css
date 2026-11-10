@@ -54,8 +54,8 @@ body{
 
 .tarjeta-check{
   flex:none;
-  width:19px;
-  height:19px;
+  width:15px;
+  height:15px;
   margin-top:2px;
   border:1.5px solid var(--petroleo);
   border-radius:50%;
