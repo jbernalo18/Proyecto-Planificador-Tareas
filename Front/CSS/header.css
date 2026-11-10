@@ -1,0 +1,96 @@
+*{
+    box-sizing: border-box;
+}
+header{
+    height: 65px;
+    background-color: color-mix(in srgb, var(--petroleo) 80%, #000 20%) ;
+    padding: 0 30px;
+    box-shadow: 0 1px 3px -2px var(--linea);
+}
+
+
+.logo-imagen{
+    width: 38px;
+    height: 42px;
+    margin-bottom: 6px;
+}
+
+.nombre-ladora{
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.div-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+
+}
+
+.div-izq-header{
+    display: flex;
+    align-items: center;
+    gap: 3px;
+
+}
+
+a{
+    text-decoration: none;
+}
+button{
+    all:unset;
+}
+
+.div-der-header{
+    display: flex;
+    gap:25px;
+    align-items: center;
+}
+
+.inicio-header{
+    color: #fff;
+}
+
+.mi-cuenta-header{
+    color: var(--linea);
+}
+
+.boton-tema-header{
+    border: 1px solid color-mix(in srgb, var(--linea) 30%, transparent) ;
+    padding: 10px 10px;
+    height: 15px;
+    width: 15px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+}
+.boton-tema-header:hover{
+    transform: rotate(10deg);
+    background-color: color-mix(in srgb, var(--linea) 60%, transparent) ;
+}
+
+.boton-iniciar-sesion-header{
+    color: #fff;
+    border: 1px solid var(--linea);
+    padding: 6px 13px;
+    border-radius: 10px;
+    background-color: color-mix(in srgb, var(--petroleo) 90%, var(--linea) 10%);
+    font-size: 15px;
+    cursor: pointer;
+    transition:transform 0.4s ease;
+
+}
+
+
+
+
+
+
+

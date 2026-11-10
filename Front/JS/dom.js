@@ -44,3 +44,30 @@ export function pintarTarjeta(tarea){
 
 
 }
+
+export function pintarColumnas(proyecto, contenedor){
+    
+    const listaEstados = ["POR HACER", "EN PROCESO", "REVISIÓN", "HECHO"];
+    const columnas= {};
+
+    listaEstados.forEach(estado => {
+        const columna = document.createElement("div");
+        const nombre = proyecto.nombresListas[estado];
+        
+        columna.classList.add("columna");
+        columna.dataset.estado = estado;
+
+        const titulo = document.createElement("h3");
+        titulo.classList.add("columna-titulo");
+        titulo.textContent = nombre;
+
+        const listaTarjetas = document.createElement("div");
+        listaTarjetas.classList.add("columna-tarjetas");
+
+        columna.append(titulo, listaTarjetas);
+        contenedor.append(columna);
+        columnas[estado]=listaTarjetas;
+    });
+
+    return columnas;
+}

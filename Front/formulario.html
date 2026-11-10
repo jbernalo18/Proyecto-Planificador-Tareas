@@ -5,11 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ládora</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./CSS/formulario.css">
+    <link rel="stylesheet" href="./CSS/header.css">
+    <link rel="stylesheet" href="./CSS/styles.css">
 </head>
 <body>
+    <header>
+        <div class="div-header">
+            <div class="div-izq-header">
+            <img src="../assets/imagenes/cristal-logo.svg" alt="Logo Ladorita" class="logo-imagen"><a href="#Inicio" class="nombre-ladora">Ládora</a>
+            </div>
+
+            <div class="div-der-header">
+                <a href="#Inicio" class="inicio-header">Inicio</a>
+                <a href="#Mi Cuenta" class="mi-cuenta-header">Mi Cuenta</a>
+                <button class="boton-tema-header"><img src="../assets/iconos/icons_sun.svg" alt="Icono Sol Tema"></button>
+                <button class="boton-iniciar-sesion-header">Iniciar Sesión</button>
+            </div>
+        </div>
+    </header>
 
     <section class="formulario-seccion"> <!--incio seccion formulario-->
         <div class="formulario-div"> <!---inicio contenedor de formulario-->
@@ -94,8 +110,10 @@
 
                 <!--tareas creadas-->
             <section class="tareas-seccion">
-                <h2 class="tareas-titulo">Tareas</h2>
+                <div class="tareas-div">
+                <h2 class="tareas-titulo">Planificador</h2>
                 <button type="button" id="btn-abrir-formulario">+ Nueva tarjeta</button>
+                 </div>
                 <div id="contenedor-tareas" class="contenedor-tareas"></div>
             </section>
 

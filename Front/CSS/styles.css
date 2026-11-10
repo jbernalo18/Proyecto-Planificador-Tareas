@@ -1,0 +1,150 @@
+/* donde salen las tareas*/
+body{
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 88% 0%, #9180AC66, transparent 42%),
+    radial-gradient(circle at 4% 100%, #4C8FA352, transparent 42%),
+    #182643;
+}
+.tareas-seccion{
+ padding: 20px 40px;
+
+}
+
+.tareas-div{
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.tareas-titulo{
+  margin-bottom:16px;
+  font-size:1.25rem;
+  color: var(--petroleo-suave);
+}
+
+
+
+.contenedor-tareas{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:16px;
+}
+
+/*tarjetas*/
+.tarjta-tarea{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  padding:12px 14px;
+  background:
+    radial-gradient(circle at 85% 10%, color-mix(in srgb, #BED7F0 75%, transparent), transparent 45%),
+    radial-gradient(circle at 12% 92%, color-mix(in srgb, #B4E1E1 55%, transparent), transparent 40%),
+    linear-gradient(135deg, #DAD3EA 0%, #EAE6F2 42%, #F8F2E8 92%);
+  border:1px solid color-mix(in srgb, #fff 90%, transparent);
+  border-radius:11px;
+  box-shadow:0 2px 8px color-mix(in srgb, var(--texto) 8%, transparent);
+  transition:0.2s;
+}
+
+.tarjta-tarea:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 18px color-mix(in srgb, var(--texto) 14%, transparent);
+}
+
+.tarjeta-check{
+  flex:none;
+  width:19px;
+  height:19px;
+  margin-top:2px;
+  border:1.5px solid var(--petroleo);
+  border-radius:50%;
+}
+
+.tarjeta-contenido{
+  flex:1;
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+
+.tarjta-tarea h3{
+  font-size:.85rem;
+}
+
+.tarjta-tarea p{
+  font-size:.75rem;
+  color:#44555D;
+}
+
+.tarjeta-descripcion{
+  white-space:nowrap; /*obligamos al texto a quedarse en una linea*/
+  overflow:hidden; /*ocultamos lo que sobra*/
+  text-overflow:ellipsis;/*pnemos puntosuspensivos*/
+}
+
+
+.tarjeta-estado{
+  align-self:flex-start;
+  margin-top:4px;
+  padding:1px 10px;
+  font-size:.7rem;
+  font-weight:500;
+  color:#25434F;
+  background:color-mix(in srgb, var(--petroleo) 14%, transparent);
+  border-radius:900px;
+}
+
+.tarjeta-eliminar-estado{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  margin-top:4px;
+}
+
+.tarjeta-eliminar{
+  padding:1px 10px;
+  font-size:.7rem;
+  font-weight:500;
+  color:var(--petroleo);
+  background:color-mix(in srgb, #fff 55%, transparent);
+  border:1px solid color-mix(in srgb, var(--petroleo) 25%, transparent);
+  border-radius:900px;
+}
+
+.tarjeta-eliminar:hover{
+  color:#fff;
+  background:var(--rojo);
+  border-color:var(--rojo);
+}
+
+.tarjeta-eliminar:focus-visible{
+  outline:none;
+  box-shadow:0 0 0 3px color-mix(in srgb, var(--turquesa) 35%, transparent);
+}
+
+
+.columna{
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 10px;
+  padding: 20px 20px;
+  
+
+}
+
+.columna-titulo{
+  color: var(--petroleo-suave);
+  font-size: 16px;
+  margin-bottom: 15px;
+  
+}
+
+.columna-tarjetas{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+

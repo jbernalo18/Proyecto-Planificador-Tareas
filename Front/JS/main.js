@@ -1,9 +1,10 @@
 import { TaskManager } from "./taskManager.js";
-import { pintarTarjeta } from "./dom.js";
+import { pintarTarjeta, pintarColumnas } from "./dom.js";
 import { ValidarFormulario, limpiarMensajes } from "./validaciones.js";
 
 
-const gestorTareas = new TaskManager();
+const proyecto = new Proyecto("Planificador","#4C8FA3");
+const gestorTareas= proyecto.gestorTareas;
 const formularioTarea = document.getElementById("form-principal");
 const contenedorTareas = document.getElementById("contenedor-tareas");
 const seccionFormulario = document.querySelector(".formulario-seccion");
@@ -38,7 +39,7 @@ formularioTarea.addEventListener("submit", (e)=> {
 
         //el gestor coloca el ID y guarda la atrea
         const tareaGuardada= gestorTareas.agregarTarea(nuevaTarea);
-        contenedorTareas.append(pintarTarjeta(tareaGuardada));
+        columnas[tareaGuardada.estado].append(pintarTarjeta(tareaGuardada));
         seccionFormulario.classList.remove("abierta");
         formularioTarea.reset();
         limpiarMensajes();
@@ -143,3 +144,9 @@ contenedorTareas.addEventListener("click",(e)=>{
         
 
     });
+
+
+    import { Proyecto } from "./project.js";
+
+
+    let columnas = pintarColumnas(proyecto,contenedorTareas);
