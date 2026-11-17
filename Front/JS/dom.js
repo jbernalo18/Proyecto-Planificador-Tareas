@@ -5,6 +5,20 @@ export function pintarTarjeta(tarea){
     //titulo de tarjeta
     const tituloTarjeta = document.createElement("h3");
     tituloTarjeta.textContent = tarea.nombre  ;
+    //editar
+    const botonEditar = document.createElement("button");
+    botonEditar.type = "button"
+
+    botonEditar.classList.add("boton-editar-tarjeta")
+    const imagen = document.createElement("img");
+    imagen.src="../assets/iconos/iconoir_edit-pencil.svg" 
+    imagen.alt="Boton Editar"
+    botonEditar.append(imagen);
+
+    const filaTitulo = document.createElement("div");
+    filaTitulo.classList.add("tarjeta-titulo-fila");
+    filaTitulo.append(tituloTarjeta, botonEditar);
+
     //etiquetas
     const contenedorEtiquetas = document.createElement("div");
     contenedorEtiquetas.classList.add("tarjeta-etiquetas");
@@ -54,7 +68,7 @@ export function pintarTarjeta(tarea){
     const botonYEstado=document.createElement("div");
     botonYEstado.classList.add("tarjeta-eliminar-estado");
     botonYEstado.append(estadoTarjeta, botonEliminar);
-    contenido.append(tituloTarjeta, contenedorEtiquetas, descripcionTarjeta, asignacionTarjeta, fechaEntrega, botonYEstado);
+    contenido.append(filaTitulo,contenedorEtiquetas, descripcionTarjeta, asignacionTarjeta, fechaEntrega, botonYEstado);
     tarjeta.append(circulo, contenido);
     return tarjeta;
 

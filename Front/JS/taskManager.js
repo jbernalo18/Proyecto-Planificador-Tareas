@@ -58,9 +58,7 @@ export class TaskManager{
         tarea.fechaDeEntrega= tareaAct.fechaDeEntrega;
         tarea.estado = tareaAct.estado;
         tarea.etiquetas= tareaAct.etiquetas;
-
         return tarea;
-        
     }  
 
     }
