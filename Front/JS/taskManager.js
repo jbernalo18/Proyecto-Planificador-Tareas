@@ -42,6 +42,27 @@ export class TaskManager{
         }
     }
 
+    buscarTareaID(id){
+     const tareaEncontrada = this.tareas.find((tarea) => tarea.id === id)
+     return tareaEncontrada;
+        }
+
+    editarTarea(id,tareaAct){
+        const tarea = this.buscarTareaID(id);
+        if(tarea === undefined){
+            return "tarea no encontrada";
+        }
+        tarea.nombre = tareaAct.nombre;
+        tarea.descripcion = tareaAct.descripcion;
+        tarea.asignadoA = tareaAct.asignadoA;
+        tarea.fechaDeEntrega= tareaAct.fechaDeEntrega;
+        tarea.estado = tareaAct.estado;
+        tarea.etiquetas= tareaAct.etiquetas;
+
+        return tarea;
+        
+    }  
+
     }
 
 

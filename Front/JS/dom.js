@@ -33,8 +33,14 @@ export function pintarTarjeta(tarea){
 
 
     //circulo de seleccion 
-    const circulo = document.createElement("span");
+    const circulo = document.createElement("button");
+    circulo.type = "button";
     circulo.classList.add("tarjeta-check");
+    if(tarea.estado=="HECHO"){
+        circulo.classList.add("hecho")
+    }else{
+        circulo.classList.remove("hecho")
+    }
 
     //contenedor que agrupa todo el texto de la tarjeta
     const contenido = document.createElement("div");
@@ -80,4 +86,16 @@ export function pintarColumnas(proyecto, contenedor){
     });
 
     return columnas;
+}
+
+
+export function renderizarTareas(tareas, columnas){
+Object.values(columnas).forEach((lista)=>{
+    lista.innerHTML = "";
+})
+
+tareas.forEach((tarea)=>{
+    const tarjeta = pintarTarjeta(tarea)
+    columnas[tarea.estado].append(tarjeta);
+})
 }

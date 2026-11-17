@@ -1,5 +1,5 @@
 import { TaskManager } from "./taskManager.js";
-import { pintarTarjeta, pintarColumnas } from "./dom.js";
+import { pintarTarjeta, pintarColumnas, renderizarTareas } from "./dom.js";
 import { ValidarFormulario, limpiarMensajes } from "./validaciones.js";
 
 
@@ -10,9 +10,6 @@ const contenedorTareas = document.getElementById("contenedor-tareas");
 const seccionFormulario = document.querySelector(".formulario-seccion");
 const btnAbrirFormulario = document.getElementById("btn-abrir-formulario");
 const btnCerrarFormulario = document.getElementById("btn-cancelar");
-
-
-
 
 
 btnAbrirFormulario.addEventListener("click",()=>{
@@ -44,8 +41,8 @@ formularioTarea.addEventListener("submit", (e)=> {
         }
 
         //el gestor coloca el ID y guarda la atrea
-        const tareaGuardada= gestorTareas.agregarTarea(nuevaTarea);
-        columnas[tareaGuardada.estado].append(pintarTarjeta(tareaGuardada));
+        gestorTareas.agregarTarea(nuevaTarea);
+        renderizarTareas(gestorTareas.getTodasTareas(),columnas)
         seccionFormulario.classList.remove("abierta");
         formularioTarea.reset();
         document.getElementById("contenedor-etiquetas").innerHTML = "";
@@ -64,15 +61,20 @@ formularioTarea.addEventListener("submit", (e)=> {
 
 contenedorTareas.addEventListener("click",(e)=>{
     const botonEliminar=e.target.closest(".tarjeta-eliminar")
-    if(botonEliminar==null){
-        return;//nohacemos nada
+    if(botonEliminar!==null){
+        const tarjeta = botonEliminar.closest(".tarjta-tarea");
+        const idAEliminar = Number(tarjeta.dataset.id);
+        gestorTareas.borrarTarea(idAEliminar);
+        renderizarTareas(gestorTareas.getTodasTareas(), columnas);
+        return;
     }
-    console.log("click eneliminar");
-    const tarjeta=botonEliminar.closest(".tarjta-tarea");
-    const idAEliminar=Number(tarjeta.dataset.id);
-    gestorTareas.borrarTarea(idAEliminar); ///eliinamos la tarea del array con el gestor de tareas
-    console.table(gestorTareas.getTodasTareas());
-    tarjeta.remove();//la borramos del DOM
+       const botonCheck = e.target.closest(".tarjeta-check");
+    if (botonCheck !== null) {
+        const tarjeta = botonCheck.closest(".tarjta-tarea");
+        const idACompletar = Number(tarjeta.dataset.id);
+        gestorTareas.actualizarEstadoTarea(idACompletar, "HECHO");
+        renderizarTareas(gestorTareas.getTodasTareas(), columnas);
+    } // actualizamos DOM
 
 });
 
@@ -154,6 +156,4 @@ contenedorTareas.addEventListener("click",(e)=>{
 
 
     import { Proyecto } from "./project.js";
-
-
     let columnas = pintarColumnas(proyecto,contenedorTareas);

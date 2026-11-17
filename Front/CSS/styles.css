@@ -27,7 +27,7 @@ body{
 
 .contenedor-tareas{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
   gap:16px;
 }
 
@@ -56,9 +56,19 @@ body{
   flex:none;
   width:15px;
   height:15px;
-  margin-top:2px;
+  margin-top:5px;
   border:1.5px solid var(--petroleo);
   border-radius:50%;
+  cursor: pointer;
+}
+
+.hecho{
+  background-color: var(--turquesa);
+}
+
+
+.tarjeta-check:hover{
+  background:color-mix(in srgb, var(--turquesa) 70%, transparent);
 }
 
 .tarjeta-contenido{
@@ -70,12 +80,13 @@ body{
 }
 
 .tarjta-tarea h3{
-  font-size:.85rem;
+  font-size:1rem;
+
 }
 
 .tarjta-tarea p{
-  font-size:.75rem;
-  color:#44555D;
+  font-size:0.87rem;
+  color:#334046;
 }
 
 .tarjeta-descripcion{
@@ -165,6 +176,6 @@ body{
 .columna-tarjetas{
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
 }
 

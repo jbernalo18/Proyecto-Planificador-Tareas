@@ -1,5 +1,4 @@
 
-
 /**reglas*/
 const minNombre = 8;
 const minDescripcion = 15;

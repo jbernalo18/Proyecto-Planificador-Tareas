@@ -226,6 +226,7 @@ textarea:focus{
   font-size:0.8rem;
   background:var(--petroleo-suave);
   border:1px solid transparent;
+  border-radius: 6px;
 }
 
 #btn-crear-etiqueta:hover{
@@ -329,6 +330,7 @@ textarea:focus{
   color:var(--texto-suave);
   background:var(--fondo-pagina);
   border:1px solid transparent;
+  border-radius: 6px;
 }
 
 .btn-cancelar:hover{
@@ -340,6 +342,8 @@ textarea:focus{
   color:#fff;
   background:var(--petroleo);
   border:1px solid var(--petroleo);
+  border-radius: 6px;
+
 }
 
 .btn-crear:hover{
