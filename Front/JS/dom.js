@@ -1,3 +1,4 @@
+
 export function pintarTarjeta(tarea){
     const tarjeta = document.createElement("article") //creamos el contenedor de la tarjeta
     tarjeta.classList.add("tarjta-tarea");

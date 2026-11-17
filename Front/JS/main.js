@@ -10,9 +10,25 @@ const contenedorTareas = document.getElementById("contenedor-tareas");
 const seccionFormulario = document.querySelector(".formulario-seccion");
 const btnAbrirFormulario = document.getElementById("btn-abrir-formulario");
 const btnCerrarFormulario = document.getElementById("btn-cancelar");
+const botonAnadirEtiq= document.getElementById("btn-crear-etiqueta");
 let idEdicion = null;
+const paletaEtiqueta = [    
+    "linear-gradient(135deg, #7DB8FF80, #2563EB80)", // azul eléctrico
+    "linear-gradient(135deg, #8FA0F580, #3B3FC980)", // índigo
+    "linear-gradient(135deg, #C0A0F880, #7B3FE080)", // violeta
+    "linear-gradient(135deg, #F2A0DC80, #C73FB580)", // magenta
+    "linear-gradient(135deg, #F7B49A80, #D9705A80)", // cobre
+    "linear-gradient(135deg, #F8C86A80, #C98A1B80)", // ámbar
+    "linear-gradient(135deg, #CFD47A80, #7F8F2B80)", // oliva
+    "linear-gradient(135deg, #8EDCA880, #2E9E6A80)", // jade
+    "linear-gradient(135deg, #6FE0C880, #14907F80)", // turquesa
+    "linear-gradient(135deg, #7FE3F080, #12A4C480)", // aqua
+    "linear-gradient(135deg, #A9D6FF80, #4C8FD680)", // azul hielo
+    "linear-gradient(135deg, #A8B8B080, #5E726880)"  // piedra
+    ]
 
 
+//listeners fijos form
 btnAbrirFormulario.addEventListener("click",()=>{
     seccionFormulario.classList.add("abierta");
 });
@@ -22,6 +38,61 @@ btnCerrarFormulario.addEventListener("click",()=>{
     formularioTarea.reset();
     document.getElementById("contenedor-etiquetas").innerHTML = "";
     limpiarMensajes();
+    idEdicion = null
+});
+
+botonAnadirEtiq.addEventListener("click",()=>{
+        const ulEtiquetas=document.getElementById("contenedor-etiquetas");
+        const itemEtiqueta=document.createElement("li");
+        itemEtiqueta.classList.add("item-etiqueta");
+        const inputEtiqueta=document.createElement("input");
+        inputEtiqueta.type="text";
+        ulEtiquetas.appendChild(itemEtiqueta);
+        itemEtiqueta.appendChild(inputEtiqueta);
+
+        let colorElegido= "linear-gradient(135deg, #F2DC98, #A5E4CB, #96C6F2)";
+        paletaEtiqueta.forEach((color)=>{
+        const botonColor=document.createElement("button");
+        botonColor.type="button";
+        botonColor.classList.add("boton-color");
+        botonColor.style.background=color;
+        itemEtiqueta.appendChild(botonColor);
+
+        botonColor.addEventListener("click",()=>{
+        colorElegido=color;
+        const todosLosColores=itemEtiqueta.querySelectorAll(".boton-color");
+        todosLosColores.forEach((boton)=>{
+        boton.classList.remove("elegido");
+        });
+
+        botonColor.classList.add("elegido");
+        })
+        });
+
+        const botonGuardarEtiqueta=document.createElement("button");
+        botonGuardarEtiqueta.type="button";
+        botonGuardarEtiqueta.classList.add("boton-guardar-etiqueta");
+        botonGuardarEtiqueta.textContent="✓";
+        itemEtiqueta.appendChild(botonGuardarEtiqueta);
+
+        const botonEliminarEtiqueta=document.createElement("button");
+        botonEliminarEtiqueta.type="button";
+        botonEliminarEtiqueta.classList.add("boton-eliminar-etiqueta");
+        botonEliminarEtiqueta.textContent="✕";
+        itemEtiqueta.appendChild(botonEliminarEtiqueta);
+        
+        botonGuardarEtiqueta.addEventListener("click",()=>{
+            const nombreEtiqueta=inputEtiqueta.value.trim();
+            const colorEtiqueta=colorElegido;
+            const etiquetaGuardada=document.createElement("span");
+            etiquetaGuardada.textContent=nombreEtiqueta;
+            etiquetaGuardada.classList.add("etiqueta-tarjeta");
+            etiquetaGuardada.style.background=colorEtiqueta;
+            ulEtiquetas.replaceChild(etiquetaGuardada,itemEtiqueta);
+
+        });
+        
+
 });
 
 formularioTarea.addEventListener("submit", (e)=> {
@@ -65,6 +136,7 @@ formularioTarea.addEventListener("submit", (e)=> {
 
 });
 
+//listener targets tarjetas
 contenedorTareas.addEventListener("click",(e)=>{
     const botonEliminar=e.target.closest(".tarjeta-eliminar")
     if(botonEliminar!==null){
@@ -101,81 +173,5 @@ contenedorTareas.addEventListener("click",(e)=>{
 });
 
 
-    const paletaEtiqueta = [    
-    "linear-gradient(135deg, #7DB8FF80, #2563EB80)", // azul eléctrico
-    "linear-gradient(135deg, #8FA0F580, #3B3FC980)", // índigo
-    "linear-gradient(135deg, #C0A0F880, #7B3FE080)", // violeta
-    "linear-gradient(135deg, #F2A0DC80, #C73FB580)", // magenta
-    "linear-gradient(135deg, #F7B49A80, #D9705A80)", // cobre
-    "linear-gradient(135deg, #F8C86A80, #C98A1B80)", // ámbar
-    "linear-gradient(135deg, #CFD47A80, #7F8F2B80)", // oliva
-    "linear-gradient(135deg, #8EDCA880, #2E9E6A80)", // jade
-    "linear-gradient(135deg, #6FE0C880, #14907F80)", // turquesa
-    "linear-gradient(135deg, #7FE3F080, #12A4C480)", // aqua
-    "linear-gradient(135deg, #A9D6FF80, #4C8FD680)", // azul hielo
-    "linear-gradient(135deg, #A8B8B080, #5E726880)"  // piedra
-    ]
-
-
-
-    
-    const botonAnadirEtiq= document.getElementById("btn-crear-etiqueta");
-    botonAnadirEtiq.addEventListener("click",()=>{
-        const ulEtiquetas=document.getElementById("contenedor-etiquetas");
-        const itemEtiqueta=document.createElement("li");
-        itemEtiqueta.classList.add("item-etiqueta");
-        const inputEtiqueta=document.createElement("input");
-        inputEtiqueta.type="text";
-        ulEtiquetas.appendChild(itemEtiqueta);
-        itemEtiqueta.appendChild(inputEtiqueta);
-
-        let colorElegido= "linear-gradient(135deg, #F2DC98, #A5E4CB, #96C6F2)";
-        paletaEtiqueta.forEach((color)=>{
-        const botonColor=document.createElement("button");
-        botonColor.type="button";
-        botonColor.classList.add("boton-color");
-        botonColor.style.background=color;
-        itemEtiqueta.appendChild(botonColor);
-
-        botonColor.addEventListener("click",()=>{
-        colorElegido=color;
-        const todosLosColores=itemEtiqueta.querySelectorAll(".boton-color");
-        todosLosColores.forEach((boton)=>{
-        boton.classList.remove("elegido");
-        });
-
-        botonColor.classList.add("elegido");
-        })
-        });
-
-        const botonGuardarEtiqueta=document.createElement("button");
-        botonGuardarEtiqueta.type="button";
-        botonGuardarEtiqueta.classList.add("boton-guardar-etiqueta");
-        botonGuardarEtiqueta.textContent="✓";
-        itemEtiqueta.appendChild(botonGuardarEtiqueta);
-
-        const botonEliminarEtiqueta=document.createElement("button");
-        botonEliminarEtiqueta.type="button";
-        botonEliminarEtiqueta.classList.add("boton-eliminar-etiqueta");
-        botonEliminarEtiqueta.textContent="✕";
-        itemEtiqueta.appendChild(botonEliminarEtiqueta);
-        
-
-
-        botonGuardarEtiqueta.addEventListener("click",()=>{
-            const nombreEtiqueta=inputEtiqueta.value.trim();
-            const colorEtiqueta=colorElegido;
-            const etiquetaGuardada=document.createElement("span");
-            etiquetaGuardada.textContent=nombreEtiqueta;
-            etiquetaGuardada.classList.add("etiqueta-tarjeta");
-            etiquetaGuardada.style.background=colorEtiqueta;
-            ulEtiquetas.replaceChild(etiquetaGuardada,itemEtiqueta);
-
-        });
-        
-
-    });
-
-
-    import { Proyecto } from "./project.js";
-    let columnas = pintarColumnas(proyecto,contenedorTareas);
+import { Proyecto } from "./project.js";
+let columnas = pintarColumnas(proyecto,contenedorTareas);
