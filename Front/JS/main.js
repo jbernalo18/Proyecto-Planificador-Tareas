@@ -10,6 +10,7 @@ const contenedorTareas = document.getElementById("contenedor-tareas");
 const seccionFormulario = document.querySelector(".formulario-seccion");
 const btnAbrirFormulario = document.getElementById("btn-abrir-formulario");
 const btnCerrarFormulario = document.getElementById("btn-cancelar");
+let idEdicion = null;
 
 
 btnAbrirFormulario.addEventListener("click",()=>{
@@ -41,7 +42,12 @@ formularioTarea.addEventListener("submit", (e)=> {
         }
 
         //el gestor coloca el ID y guarda la atrea
-        gestorTareas.agregarTarea(nuevaTarea);
+        if (idEdicion === null) {
+            gestorTareas.agregarTarea(nuevaTarea);
+        } else {
+            gestorTareas.editarTarea(idEdicion, nuevaTarea);
+            idEdicion = null;
+        }
         renderizarTareas(gestorTareas.getTodasTareas(),columnas)
         seccionFormulario.classList.remove("abierta");
         formularioTarea.reset();
@@ -74,7 +80,23 @@ contenedorTareas.addEventListener("click",(e)=>{
         const idACompletar = Number(tarjeta.dataset.id);
         gestorTareas.actualizarEstadoTarea(idACompletar, "HECHO");
         renderizarTareas(gestorTareas.getTodasTareas(), columnas);
+        return;
     } // actualizamos DOM
+    const botonEditar = e.target.closest(".boton-editar-tarjeta")
+    if(botonEditar!=null){
+        const tarjeta = botonEditar.closest(".tarjta-tarea");
+        
+        const id = Number(tarjeta.dataset.id);
+        const tarea = gestorTareas.buscarTareaID(id);
+        idEdicion = id;
+        document.getElementById("campo-nombre-tarjeta").value = tarea.nombre;
+        document.getElementById("campo-descripcion-tarjeta").value = tarea.descripcion;
+        document.getElementById("campo-asignacion-tarjeta").value = tarea.asignadoA;
+        document.getElementById("campo-fecha-tarjeta").value = tarea.fechaDeEntrega;
+        document.querySelector(`input[name="estado-tarjeta"][value="${tarea.estado}"]`).checked = true;
+        seccionFormulario.classList.add("abierta");
+        return;
+    }
 
 });
 
