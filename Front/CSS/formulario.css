@@ -338,7 +338,7 @@ textarea:focus{
   transform:translateY(-2px);
 }
 
-.btn-crear{
+#btn-crear{
   color:#fff;
   background:var(--petroleo);
   border:1px solid var(--petroleo);
@@ -346,7 +346,7 @@ textarea:focus{
 
 }
 
-.btn-crear:hover{
+#btn-crear:hover{
   background:var(--turquesa);
   border-color:var(--turquesa);
   transform:translateY(-2px);

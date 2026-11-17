@@ -27,9 +27,9 @@ const paletaEtiqueta = [
     "linear-gradient(135deg, #A8B8B080, #5E726880)"  // piedra
     ]
 
-
-//listeners fijos form
+//listeners  form
 btnAbrirFormulario.addEventListener("click",()=>{
+
     seccionFormulario.classList.add("abierta");
 });
 
@@ -89,11 +89,16 @@ botonAnadirEtiq.addEventListener("click",()=>{
             etiquetaGuardada.classList.add("etiqueta-tarjeta");
             etiquetaGuardada.style.background=colorEtiqueta;
             ulEtiquetas.replaceChild(etiquetaGuardada,itemEtiqueta);
-
+            
         });
-        
+        botonEliminarEtiqueta.addEventListener("click",()=>{
+            itemEtiqueta.remove();
+        });
 
 });
+
+
+
 
 formularioTarea.addEventListener("submit", (e)=> {
     e.preventDefault(); //evita que la pagina se recargue
@@ -136,6 +141,7 @@ formularioTarea.addEventListener("submit", (e)=> {
 
 });
 
+
 //listener targets tarjetas
 contenedorTareas.addEventListener("click",(e)=>{
     const botonEliminar=e.target.closest(".tarjeta-eliminar")
@@ -166,12 +172,20 @@ contenedorTareas.addEventListener("click",(e)=>{
         document.getElementById("campo-asignacion-tarjeta").value = tarea.asignadoA;
         document.getElementById("campo-fecha-tarjeta").value = tarea.fechaDeEntrega;
         document.querySelector(`input[name="estado-tarjeta"][value="${tarea.estado}"]`).checked = true;
+        const ulEtiquetas = document.getElementById("contenedor-etiquetas");
+        ulEtiquetas.innerHTML = "";
+        tarea.etiquetas.forEach((etiqueta) => {
+            const etiquetaGuardada = document.createElement("span");
+            etiquetaGuardada.textContent = etiqueta.nombre;
+            etiquetaGuardada.classList.add("etiqueta-tarjeta");
+            etiquetaGuardada.style.background = etiqueta.color;
+            ulEtiquetas.append(etiquetaGuardada);
+        });
         seccionFormulario.classList.add("abierta");
         return;
     }
 
 });
-
 
 import { Proyecto } from "./project.js";
 let columnas = pintarColumnas(proyecto,contenedorTareas);
