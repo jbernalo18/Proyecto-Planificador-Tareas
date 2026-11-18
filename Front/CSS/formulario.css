@@ -102,8 +102,8 @@ form{
 .form-columna-derecha{
   display:flex;
   flex-direction:column;
-  gap:20px;
-  padding:14px 32px;
+  gap:13px;
+  padding:12px 32px;
 }
 
 .form-columna-izquierda{
