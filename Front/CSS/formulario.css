@@ -102,8 +102,8 @@ form{
 .form-columna-derecha{
   display:flex;
   flex-direction:column;
-  gap:13px;
-  padding:12px 32px;
+  gap:20px;
+  padding:14px 32px;
 }
 
 .form-columna-izquierda{
@@ -250,15 +250,23 @@ textarea:focus{
 }
 
 .etiqueta-tarjeta{
-  
+  cursor: pointer;
   display: inline-block;
   margin-right: 6px;
   margin-top: 10px;
   padding: 5px 14px;
   border-radius: 10px;
   opacity:0.7;
+  position: relative;
 }
 
+.etiqueta-tarjeta:hover::after{
+  content: "✕";
+  margin-left: 6px;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--rojo);
+}
 
 .boton-guardar-etiqueta,
 .boton-eliminar-etiqueta{
@@ -346,7 +354,7 @@ textarea:focus{
 
 }
 
-#btn-crear:hover{
+btn-crear:hover{
   background:var(--turquesa);
   border-color:var(--turquesa);
   transform:translateY(-2px);

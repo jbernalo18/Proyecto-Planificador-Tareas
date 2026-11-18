@@ -141,6 +141,13 @@ formularioTarea.addEventListener("submit", (e)=> {
 
 });
 
+document.getElementById("contenedor-etiquetas").addEventListener("click", (e) => {
+    const etiqueta = e.target.closest(".etiqueta-tarjeta");
+    if (etiqueta !== null) {
+        etiqueta.remove();
+    }
+});
+
 
 //listener targets tarjetas
 contenedorTareas.addEventListener("click",(e)=>{
@@ -178,6 +185,7 @@ contenedorTareas.addEventListener("click",(e)=>{
             const etiquetaGuardada = document.createElement("span");
             etiquetaGuardada.textContent = etiqueta.nombre;
             etiquetaGuardada.classList.add("etiqueta-tarjeta");
+            etiquetaGuardada.title = "Clic para quitar";
             etiquetaGuardada.style.background = etiqueta.color;
             ulEtiquetas.append(etiquetaGuardada);
         });
@@ -186,6 +194,9 @@ contenedorTareas.addEventListener("click",(e)=>{
     }
 
 });
+
+
+
 
 import { Proyecto } from "./project.js";
 let columnas = pintarColumnas(proyecto,contenedorTareas);
