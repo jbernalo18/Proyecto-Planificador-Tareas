@@ -46,6 +46,19 @@ export function pintarTarjeta(tarea){
     const fechaEntrega = document.createElement("p");
     fechaEntrega.textContent="Entrega: "+tarea.fechaDeEntrega;
 
+    //prioridad
+    const prioridadTarjeta = document.createElement("span");
+    prioridadTarjeta.classList.add("tarjeta-prioridad");
+    const puntoPrioridad = document.createElement("span");
+    puntoPrioridad.classList.add("punto", `punto-${tarea.prioridad}`);
+    const textoPrioridad = document.createElement("span");
+    textoPrioridad.textContent = tarea.prioridad;
+    prioridadTarjeta.append(puntoPrioridad, textoPrioridad);
+
+    const filaFecha = document.createElement("div");
+    filaFecha.classList.add("tarjeta-fecha-fila");
+    filaFecha.append(fechaEntrega, prioridadTarjeta);
+
 
     //circulo de seleccion 
     const circulo = document.createElement("button");
@@ -69,7 +82,7 @@ export function pintarTarjeta(tarea){
     const botonYEstado=document.createElement("div");
     botonYEstado.classList.add("tarjeta-eliminar-estado");
     botonYEstado.append(estadoTarjeta, botonEliminar);
-    contenido.append(filaTitulo,contenedorEtiquetas, descripcionTarjeta, asignacionTarjeta, fechaEntrega, botonYEstado);
+    contenido.append(filaTitulo,contenedorEtiquetas, descripcionTarjeta, asignacionTarjeta, filaFecha, botonYEstado);
     tarjeta.append(circulo, contenido);
     return tarjeta;
 

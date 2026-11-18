@@ -114,7 +114,8 @@ formularioTarea.addEventListener("submit", (e)=> {
             asignadoA: document.getElementById("campo-asignacion-tarjeta").value.trim(),
             fechaDeEntrega: document.getElementById("campo-fecha-tarjeta").value,
             estado: document.querySelector('input[name="estado-tarjeta"]:checked').value,
-            etiquetas: etiquetas
+            etiquetas: etiquetas,
+            prioridad: document.querySelector('input[name="prioridad-tarjeta"]:checked').value
         }
 
         //el gestor coloca el ID y guarda la atrea
@@ -179,6 +180,7 @@ contenedorTareas.addEventListener("click",(e)=>{
         document.getElementById("campo-asignacion-tarjeta").value = tarea.asignadoA;
         document.getElementById("campo-fecha-tarjeta").value = tarea.fechaDeEntrega;
         document.querySelector(`input[name="estado-tarjeta"][value="${tarea.estado}"]`).checked = true;
+        document.querySelector(`input[name="prioridad-tarjeta"][value="${tarea.prioridad}"]`).checked = true;
         const ulEtiquetas = document.getElementById("contenedor-etiquetas");
         ulEtiquetas.innerHTML = "";
         tarea.etiquetas.forEach((etiqueta) => {

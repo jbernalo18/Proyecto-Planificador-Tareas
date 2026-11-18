@@ -81,13 +81,13 @@
   }
 
   .tarjta-tarea h3 {
-    font-size: 1rem;
+    font-size: 0.95rem;
 
   }
 
   .tarjta-tarea p {
     font-size: 0.87rem;
-    color: #334046;
+    color: #27343A;
   }
 
   .boton-editar-tarjeta {
@@ -129,8 +129,8 @@
     padding: 1px 10px;
     font-size: .7rem;
     font-weight: 500;
-    color: #25434F;
-    background: color-mix(in srgb, var(--petroleo) 14%, transparent);
+    color: #1B3641;
+    background: color-mix(in srgb, var(--petroleo) 22%, transparent);
     border-radius: 900px;
   }
 
@@ -180,7 +180,7 @@
     padding: 2px 8px;
     border-radius: 999px;
     color: var(--texto);
-    opacity: 0.7;
+    opacity: 0.8;
   }
 
 
@@ -204,4 +204,30 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
+    max-height: 65vh;
+    overflow-y: auto;
+    padding: 4px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,.25) transparent;
   }
+
+  .tarjeta-fecha-fila{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:6px;
+}
+
+.tarjeta-prioridad{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  font-size:.75rem;
+  color:#334046;
+  font-weight:500;
+  text-transform:capitalize;
+}
+
+.prioridad-alta{ background:color-mix(in srgb, var(--ambar) 35%, transparent); }
+.prioridad-media{ background:color-mix(in srgb, var(--dorado) 35%, transparent); }
+.prioridad-baja{ background:color-mix(in srgb, var(--verde-agua) 35%, transparent); }

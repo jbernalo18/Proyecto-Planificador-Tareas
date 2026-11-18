@@ -216,9 +216,9 @@ textarea:focus{
   height:10px;
   border-radius:50%;
 }
-.punto-alta{background:var(--ambar)}
+.punto-alta{background: color-mix(in srgb, var(--rojo) 70%, transparent) }
 .punto-media{background:var(--dorado)}
-.punto-baja{background:var(--verde-agua)}
+.punto-baja{background:color-mix(in srgb, var(--turquesa) 60%, var(--petroleo) 40%)}
 
 /*botones*/
 #btn-crear-etiqueta{
@@ -262,7 +262,7 @@ textarea:focus{
 
 .etiqueta-tarjeta:hover::after{
   content: "✕";
-  margin-left: 6px;
+  margin-left: 4px;
   font-size: 1rem;
   font-weight: 400;
   color: var(--rojo);
