@@ -62,6 +62,24 @@ export class TaskManager{
         return tarea;
     }  
 
+    save(){
+        localStorage.setItem("tareas", JSON.stringify(this.tareas));
+        localStorage.setItem("ultimoId", this.id);
+
+    } 
+
+    load(){
+        try{
+            const data = localStorage.getItem("tareas");
+           this.tareas = data ? JSON.parse(data) : [];
+            const idGuardado = localStorage.getItem("ultimoId");
+            this.id = idGuardado !==null ? Number(idGuardado) : 0;
+        } catch {
+        this.tareas = [];
+        this.id = 0;
+    }
+  }
+
     }
 
 

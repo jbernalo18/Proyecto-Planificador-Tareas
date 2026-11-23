@@ -3,7 +3,7 @@ import { TaskManager }  from "./taskManager.js";
 export class Proyecto{
     constructor(nombre,color){
         this.nombre=nombre;
-        this.nombre=color
+        this.color=color
         this.gestorTareas= new TaskManager();
         this.nombresListas= {
             "POR HACER": "Por hacer",

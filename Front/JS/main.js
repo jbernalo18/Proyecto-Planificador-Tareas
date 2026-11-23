@@ -1,4 +1,3 @@
-import { TaskManager } from "./taskManager.js";
 import { pintarTarjeta, pintarColumnas, renderizarTareas } from "./dom.js";
 import { ValidarFormulario, limpiarMensajes } from "./validaciones.js";
 
@@ -126,6 +125,7 @@ formularioTarea.addEventListener("submit", (e)=> {
             idEdicion = null;
         }
         renderizarTareas(gestorTareas.getTodasTareas(),columnas)
+        gestorTareas.save(); 
         seccionFormulario.classList.remove("abierta");
         formularioTarea.reset();
         document.getElementById("contenedor-etiquetas").innerHTML = "";
@@ -157,6 +157,7 @@ contenedorTareas.addEventListener("click",(e)=>{
         const tarjeta = botonEliminar.closest(".tarjta-tarea");
         const idAEliminar = Number(tarjeta.dataset.id);
         gestorTareas.borrarTarea(idAEliminar);
+        gestorTareas.save(); 
         renderizarTareas(gestorTareas.getTodasTareas(), columnas);
         return;
     }
@@ -166,6 +167,7 @@ contenedorTareas.addEventListener("click",(e)=>{
         const idACompletar = Number(tarjeta.dataset.id);
         gestorTareas.actualizarEstadoTarea(idACompletar, "HECHO");
         renderizarTareas(gestorTareas.getTodasTareas(), columnas);
+        gestorTareas.save(); 
         return;
     } // actualizamos DOM
     const botonEditar = e.target.closest(".boton-editar-tarjeta")
@@ -202,3 +204,5 @@ contenedorTareas.addEventListener("click",(e)=>{
 
 import { Proyecto } from "./project.js";
 let columnas = pintarColumnas(proyecto,contenedorTareas);
+gestorTareas.load();
+renderizarTareas(gestorTareas.getTodasTareas(), columnas);
