@@ -110,10 +110,23 @@
 
                 <!--tareas creadas-->
             <section class="tareas-seccion">
-                <div class="tareas-div">
-                <h2 class="tareas-titulo">Planificador</h2>
-                <button type="button" id="btn-abrir-formulario">+ Nueva tarjeta</button>
-                 </div>
+                    <div class="tareas-div">
+
+                    <div class="selector-proyecto">
+                        <button type="button" id="btn-selector" aria-expanded="false" aria-controls="lista-proyectos">
+                            <span class="punto"></span>
+                            <span id="nombre-proyecto-actual">Planificador</span> ▾
+                        </button>
+                        <div id="lista-proyectos" class="lista-oculta" >
+                        <p>Mis proyectos</p>
+                        <ul>
+
+                        </ul>
+                        <button type="button" id="btn-nuevo-proyecto">+ Nuevo proyecto</button>
+                        </div>
+                    </div>
+
+                <button type="button" id="btn-abrir-formulario" disabled title="Crea un proyecto primero">+ Nueva tarjeta</button>                    </div>
                 <div id="contenedor-tareas" class="contenedor-tareas"></div>
             </section>
 

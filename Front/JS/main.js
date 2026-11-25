@@ -1,15 +1,21 @@
 import { pintarTarjeta, pintarColumnas, renderizarTareas } from "./dom.js";
 import { ValidarFormulario, limpiarMensajes } from "./validaciones.js";
+import { Proyecto } from "./project.js";
 
-
-const proyecto = new Proyecto("Planificador","#4C8FA3");
-const gestorTareas= proyecto.gestorTareas;
+const colorLabradorita= "#fff";
+const proyectos = [];
+let proyectoAct = proyectos[0];
+let columnas;
 const formularioTarea = document.getElementById("form-principal");
 const contenedorTareas = document.getElementById("contenedor-tareas");
 const seccionFormulario = document.querySelector(".formulario-seccion");
 const btnAbrirFormulario = document.getElementById("btn-abrir-formulario");
 const btnCerrarFormulario = document.getElementById("btn-cancelar");
 const botonAnadirEtiq= document.getElementById("btn-crear-etiqueta");
+const botonGestorProyector = document.getElementById("btn-selector");
+const listaProyectos = document.getElementById("lista-proyectos");
+const botonCrearProyecto = document.getElementById("btn-nuevo-proyecto");
+const nombreProyectoActual = document.getElementById("nombre-proyecto-actual");
 let idEdicion = null;
 const paletaEtiqueta = [    
     "linear-gradient(135deg, #7DB8FF80, #2563EB80)", // azul eléctrico
@@ -26,11 +32,58 @@ const paletaEtiqueta = [
     "linear-gradient(135deg, #A8B8B080, #5E726880)"  // piedra
     ]
 
+
+
+//listeners inicio
+botonGestorProyector.addEventListener("click",()=>{
+listaProyectos.classList.toggle("lista-oculta");
+});
+
+botonCrearProyecto.addEventListener("click",()=>{
+    const divCrearProyecto = document.createElement("div");
+    const campoCrearProyecto =  document.createElement("input");
+     campoCrearProyecto.type="text";
+    const checkCrearProyecto = document.createElement("button");
+    checkCrearProyecto.id  = "btn-confirmar-crear-proyecto";
+    checkCrearProyecto.textContent="✓";
+    checkCrearProyecto.type = "button"
+    divCrearProyecto.append(campoCrearProyecto,checkCrearProyecto);
+    listaProyectos.append(divCrearProyecto)
+    checkCrearProyecto.addEventListener("click", ()=>{
+        let nombreProyectoConfirmado=  campoCrearProyecto.value.trim();
+        console.log(nombreProyectoConfirmado)
+        if(nombreProyectoConfirmado===""){
+            return;
+        }
+
+        const nuevoProyecto = new Proyecto(nombreProyectoConfirmado,colorLabradorita)
+        proyectos.push(nuevoProyecto);
+        divCrearProyecto.remove()
+        const itemListaProyecto = document.createElement("li");
+        itemListaProyecto.style.listStyle = "none";
+        const botonProyecto = document.createElement("button");
+        const spanPunto = document.createElement("span");
+        spanPunto.classList.add("punto");
+        botonProyecto.append(spanPunto, " ", nombreProyectoConfirmado);
+        itemListaProyecto.append(botonProyecto);
+        botonCrearProyecto.before(itemListaProyecto);
+
+        botonProyecto.addEventListener("click", () => {
+            seleccionarProyecto(nuevoProyecto);
+        });
+
+        seleccionarProyecto(nuevoProyecto); 
+
+    })
+
+})
+
+
 //listeners  form
 btnAbrirFormulario.addEventListener("click",()=>{
 
     seccionFormulario.classList.add("abierta");
-});
+})
 
 btnCerrarFormulario.addEventListener("click",()=>{
     seccionFormulario.classList.remove("abierta");
@@ -96,9 +149,6 @@ botonAnadirEtiq.addEventListener("click",()=>{
 
 });
 
-
-
-
 formularioTarea.addEventListener("submit", (e)=> {
     e.preventDefault(); //evita que la pagina se recargue
 
@@ -119,18 +169,18 @@ formularioTarea.addEventListener("submit", (e)=> {
 
         //el gestor coloca el ID y guarda la atrea
         if (idEdicion === null) {
-            gestorTareas.agregarTarea(nuevaTarea);
+            proyectoAct.gestorTareas.agregarTarea(nuevaTarea);
         } else {
-            gestorTareas.editarTarea(idEdicion, nuevaTarea);
+            proyectoAct.gestorTareas.editarTarea(idEdicion, nuevaTarea);
             idEdicion = null;
         }
-        renderizarTareas(gestorTareas.getTodasTareas(),columnas)
-        gestorTareas.save(); 
+        renderizarTareas(proyectoAct.gestorTareas.getTodasTareas(),columnas)
+        proyectoAct.gestorTareas.save(); 
         seccionFormulario.classList.remove("abierta");
         formularioTarea.reset();
         document.getElementById("contenedor-etiquetas").innerHTML = "";
         limpiarMensajes();
-        console.table(gestorTareas.getTodasTareas());
+        console.table(proyectoAct.gestorTareas.getTodasTareas());
 
         
     }else{
@@ -150,24 +200,25 @@ document.getElementById("contenedor-etiquetas").addEventListener("click", (e) =>
 });
 
 
+
 //listener targets tarjetas
 contenedorTareas.addEventListener("click",(e)=>{
     const botonEliminar=e.target.closest(".tarjeta-eliminar")
     if(botonEliminar!==null){
         const tarjeta = botonEliminar.closest(".tarjta-tarea");
         const idAEliminar = Number(tarjeta.dataset.id);
-        gestorTareas.borrarTarea(idAEliminar);
-        gestorTareas.save(); 
-        renderizarTareas(gestorTareas.getTodasTareas(), columnas);
+        proyectoAct.gestorTareas.borrarTarea(idAEliminar);
+        proyectoAct.gestorTareas.save(); 
+        renderizarTareas(proyectoAct.gestorTareas.getTodasTareas(), columnas);
         return;
     }
        const botonCheck = e.target.closest(".tarjeta-check");
     if (botonCheck !== null) {
         const tarjeta = botonCheck.closest(".tarjta-tarea");
         const idACompletar = Number(tarjeta.dataset.id);
-        gestorTareas.actualizarEstadoTarea(idACompletar, "HECHO");
-        renderizarTareas(gestorTareas.getTodasTareas(), columnas);
-        gestorTareas.save(); 
+        proyectoAct.gestorTareas.actualizarEstadoTarea(idACompletar, "HECHO");
+        renderizarTareas(proyectoAct.gestorTareas.getTodasTareas(), columnas);
+        proyectoAct.gestorTareas.save(); 
         return;
     } // actualizamos DOM
     const botonEditar = e.target.closest(".boton-editar-tarjeta")
@@ -175,7 +226,7 @@ contenedorTareas.addEventListener("click",(e)=>{
         const tarjeta = botonEditar.closest(".tarjta-tarea");
         
         const id = Number(tarjeta.dataset.id);
-        const tarea = gestorTareas.buscarTareaID(id);
+        const tarea = proyectoAct.gestorTareas.buscarTareaID(id);
         idEdicion = id;
         document.getElementById("campo-nombre-tarjeta").value = tarea.nombre;
         document.getElementById("campo-descripcion-tarjeta").value = tarea.descripcion;
@@ -199,10 +250,21 @@ contenedorTareas.addEventListener("click",(e)=>{
 
 });
 
+if (proyectoAct) {
+    columnas = pintarColumnas(proyectoAct, contenedorTareas);
+    proyectoAct.gestorTareas.load();
+    renderizarTareas(proyectoAct.gestorTareas.getTodasTareas(), columnas);
+}
 
+//FUNCIONES
 
-
-import { Proyecto } from "./project.js";
-let columnas = pintarColumnas(proyecto,contenedorTareas);
-gestorTareas.load();
-renderizarTareas(gestorTareas.getTodasTareas(), columnas);
+function seleccionarProyecto(proyecto) {
+    btnAbrirFormulario.disabled = false;
+    btnAbrirFormulario.title = "";
+    proyectoAct = proyecto;
+    nombreProyectoActual.textContent = proyectoAct.nombre;
+    columnas = pintarColumnas(proyectoAct, contenedorTareas);
+    proyectoAct.gestorTareas.load();
+    renderizarTareas(proyectoAct.gestorTareas.getTodasTareas(), columnas);
+    listaProyectos.classList.add("lista-oculta");
+}

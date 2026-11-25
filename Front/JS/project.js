@@ -4,7 +4,7 @@ export class Proyecto{
     constructor(nombre,color){
         this.nombre=nombre;
         this.color=color
-        this.gestorTareas= new TaskManager();
+        this.gestorTareas= new TaskManager(nombre);
         this.nombresListas= {
             "POR HACER": "Por hacer",
             "EN PROCESO": "En proceso",

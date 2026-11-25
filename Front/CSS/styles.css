@@ -231,3 +231,69 @@
 .prioridad-alta{ background:color-mix(in srgb, var(--ambar) 35%, transparent); }
 .prioridad-media{ background:color-mix(in srgb, var(--dorado) 35%, transparent); }
 .prioridad-baja{ background:color-mix(in srgb, var(--verde-agua) 35%, transparent); }
+
+/*selector de proyectos*/
+.selector-proyecto{
+  position:relative;
+  align-self:flex-start;
+  color:#fff;
+}
+
+.selector-proyecto button{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:6px 7px;
+  font-size:15px;
+  border-radius:10px;
+  cursor:pointer;
+  transition:0.2s;
+  box-sizing: border-box;
+}
+
+.selector-proyecto > button{
+  background:color-mix(in srgb, #fff 10%, transparent);
+  border:1px solid color-mix(in srgb, #fff 25%, transparent);
+}
+
+.selector-proyecto button:hover{
+background: color-mix(in srgb, #fff 10%, transparent);
+}
+
+.selector-proyecto .punto{
+  flex:none;
+  background:var(--turquesa);
+}
+
+#lista-proyectos{
+  position:absolute;
+  top:100%;
+  left:0;
+  z-index:10;
+  min-width:220px;
+  margin-top:6px;
+  padding:10px;
+  background:#182643;
+  border-radius:12px;
+}
+
+#lista-proyectos p{
+  margin-bottom:6px;
+  font-size:0.75rem;
+  color:color-mix(in srgb, #fff 55%, transparent);
+}
+
+#lista-proyectos ul{
+  list-style:none;
+}
+
+#lista-proyectos button{
+  width:100%;
+  padding:6px 10px;
+  border-radius:8px;
+}
+
+
+.lista-oculta{
+  display: none;
+}

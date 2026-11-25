@@ -90,7 +90,7 @@ export function pintarTarjeta(tarea){
 }
 
 export function pintarColumnas(proyecto, contenedor){
-    
+    contenedor.innerHTML = "";
     const listaEstados = ["POR HACER", "EN PROCESO", "REVISIÓN", "HECHO"];
     const columnas= {};
 
@@ -127,3 +127,4 @@ tareas.forEach((tarea)=>{
     columnas[tarea.estado].append(tarjeta);
 })
 }
+

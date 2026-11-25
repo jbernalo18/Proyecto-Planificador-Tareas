@@ -1,8 +1,10 @@
 export class TaskManager{
 
-    constructor(){
+    constructor(claveProyecto){
         this.tareas=[]; //array vacio para guardar las tareas
         this.id=0;
+        this.claveTareas = `tareas_${claveProyecto}`;
+        this.claveId = `ultimoId_${claveProyecto}`;
 
     }
 
@@ -62,24 +64,23 @@ export class TaskManager{
         return tarea;
     }  
 
-    save(){
-        localStorage.setItem("tareas", JSON.stringify(this.tareas));
-        localStorage.setItem("ultimoId", this.id);
+    save() {
+        localStorage.setItem(this.claveTareas, JSON.stringify(this.tareas));
+        localStorage.setItem(this.claveId, this.id);
+    }
 
-    } 
-
-    load(){
-        try{
-            const data = localStorage.getItem("tareas");
-           this.tareas = data ? JSON.parse(data) : [];
-            const idGuardado = localStorage.getItem("ultimoId");
-            this.id = idGuardado !==null ? Number(idGuardado) : 0;
+    load() {
+        try {
+            const data = localStorage.getItem(this.claveTareas);
+            this.tareas = data ? JSON.parse(data) : [];
+            const idGuardado = localStorage.getItem(this.claveId);
+            this.id = idGuardado !== null ? Number(idGuardado) : 0;
         } catch {
-        this.tareas = [];
-        this.id = 0;
+            this.tareas = [];
+            this.id = 0;
+        }
     }
-  }
+}
 
-    }
 
 
