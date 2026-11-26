@@ -56,8 +56,9 @@ button{
   width:100%;
   max-width:960px;
   overflow:hidden;
-  background:#fff;
-  border:1px solid var(--linea);
+  background:var(--form-fondo);
+  color: var(--form-texto);
+  border: 1px solid var(--form-linea);
   border-radius:16px;
   box-shadow:0 8px 24px color-mix(in srgb, var(--texto) 8%, transparent);
 }
@@ -76,7 +77,7 @@ button{
   align-items:center;
   gap:14px;
   padding:5px 12px;
-  border-bottom:1px solid var(--linea);
+  border-bottom: 1px solid var(--form-linea);
 }
 
 .form-logo{
@@ -89,7 +90,7 @@ button{
 
 .form-cabecera p{
   font-size:.875rem;
-  color:var(--texto-suave);
+  color:var(--form-texto-suave);
 }
 
 /*columnas*/
@@ -111,8 +112,8 @@ form{
 }
 
 .form-columna-derecha{
-  background:color-mix(in srgb, var(--verde-agua) 3%, transparent);
-  border-left:1px solid var(--linea);
+  background: var(--form-columna-der);
+  border-left: 1px solid var(--form-linea);
 }
 
 label,
@@ -134,7 +135,9 @@ textarea{
   min-height:44px;
   padding:10px 12px;
   font:inherit;
-  border:1px solid var(--borde-campo);
+  color: var(--form-texto);
+  background: var(--form-campo-fondo);
+  border: 1px solid var(--form-borde-campo);
   border-radius:var(--radio);
 }
 
@@ -145,8 +148,8 @@ textarea:focus{
   padding:9px 11px;
   border:1.8px solid transparent;
   background:
-    linear-gradient(#fff,#fff) padding-box,
-    linear-gradient(135deg,#26343A,#55C7E8,#D9A441,#967BB6) border-box;
+    linear-gradient(var(--form-campo-fondo), var(--form-campo-fondo)) padding-box,
+    linear-gradient(135deg, #26343A, #55C7E8, #D9A441, #967BB6) border-box;
 }
 .form-campo-nombre-tarjeta input{
   font-size:1.07rem;
@@ -187,8 +190,9 @@ textarea:focus{
   padding:6px 12px;
   font-size:0.8rem;
   font-weight:500;
-  background:#fff;
-  border:1px solid var(--borde-campo);
+  color: var(--form-texto);
+  background: var(--form-campo-fondo);
+  border: 1px solid var(--form-borde-campo);
   border-radius:var(--radio);
   cursor:pointer;
 }
@@ -326,7 +330,7 @@ textarea:focus{
   justify-content:flex-end;
   gap:12px;
   padding:16px 32px;
-  border-top:1px solid var(--linea);
+  border-top:1px solid var(--form-linea);
 }
 
 .form-acciones button{
@@ -354,7 +358,7 @@ textarea:focus{
 
 }
 
-#btn-crear:hover{
+#btn-crear :hover{
   background:var(--turquesa);
   border-color:var(--turquesa);
   transform:translateY(-2px);
@@ -400,12 +404,19 @@ textarea:focus{
 }
 
 .btn-primario:hover:not(:disabled){
-  background: color-mix(in srgb, var(--turquesa) 50%, var(--petroleo) 50%);
+  background:var(--turquesa);
   border-color:var(--turquesa);
-  transform:translateY(-2px); 
-  box-shadow:0 3px 3px color-mix(in srgb,  var(--texto-suave)30%,transparent);
-  transition: 0.3s;
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px color-mix(in srgb, var(--turquesa) 38%, transparent);
 }
+
+#btn-crear:hover{
+  background:var(--turquesa);
+  border-color:var(--turquesa);
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px color-mix(in srgb, var(--turquesa) 38%, transparent);
+}
+
 
 /*celular */
 @media (max-width:760px){

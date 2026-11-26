@@ -24,7 +24,7 @@ const botonConfirmarProyecto = document.getElementById("btn-confirmar-crear-proy
 const overlaySelector = document.getElementById("overlay-selector");
 const botonTema = document.querySelector(".boton-tema-header");
 const iconoTema = botonTema.querySelector("img");
-
+const botonGuardarEditar = document.getElementById("btn-crear")
 
 let idEdicion = null;
 const paletaEtiqueta = [    
@@ -107,16 +107,18 @@ botonConfirmarProyecto.addEventListener("click", () => {
 
 //listeners  form
 btnAbrirFormulario.addEventListener("click",()=>{
-
+    idEdicion = null;
+    botonGuardarEditar.textContent = "Guardar tarea";
     seccionFormulario.classList.add("abierta");
 })
 
 btnCerrarFormulario.addEventListener("click",()=>{
-    seccionFormulario.classList.remove("abierta");
+seccionFormulario.classList.remove("abierta");
     formularioTarea.reset();
     document.getElementById("contenedor-etiquetas").innerHTML = "";
     limpiarMensajes();
-    idEdicion = null
+    idEdicion = null;
+    botonGuardarEditar.textContent = "Guardar tarea";
 });
 
 botonAnadirEtiq.addEventListener("click",()=>{
@@ -206,13 +208,16 @@ formularioTarea.addEventListener("submit", (e)=> {
         formularioTarea.reset();
         document.getElementById("contenedor-etiquetas").innerHTML = "";
         limpiarMensajes();
+        botonGuardarEditar.textContent = "Guardar tarea";
         console.table(proyectoAct.gestorTareas.getTodasTareas());
 
         
     }else{
-        alert("Formulario inválido: no se agrega la tarea");
+        const primerError = formularioTarea.querySelector(".texto-error");
+        if (primerError) {
+        primerError.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }    
     }
-
 
 
 
@@ -249,6 +254,8 @@ contenedorTareas.addEventListener("click",(e)=>{
     } // actualizamos DOM
     const botonEditar = e.target.closest(".boton-editar-tarjeta")
     if(botonEditar!=null){
+        botonGuardarEditar.textContent = "Actualizar";
+
         const tarjeta = botonEditar.closest(".tarjta-tarea");
         
         const id = Number(tarjeta.dataset.id);

@@ -13,7 +13,15 @@
   --tablero-acento:#6FE0C8;
   --tablero-overlay:color-mix(in srgb, #000 25%, transparent);
   --tablero-hover:color-mix(in srgb, #fff 10%, transparent);
-}
+
+  --form-fondo: #182643;
+  --form-columna-der: #1E3052;
+  --form-texto: #F4F6FB;
+  --form-texto-suave: color-mix(in srgb, #F4F6FB 70%, transparent);
+  --form-linea: color-mix(in srgb, #FFFFFF 14%, transparent);
+  --form-borde-campo: color-mix(in srgb, #FFFFFF 22%, transparent);
+  --form-campo-fondo: #121D33;
+  }
 
 [data-tema="claro"]{
   --tablero-fondo:linear-gradient(135deg, #E8EDF5, #EDE8F4);
@@ -27,6 +35,14 @@
   --tablero-acento:#1E7A76;
   --tablero-overlay:color-mix(in srgb, #182643 15%, transparent);
   --tablero-hover:color-mix(in srgb, #182643 8%, transparent);
+
+  --form-fondo: #FFFFFF;
+  --form-columna-der: color-mix(in srgb, var(--verde-agua) 3%, transparent);
+  --form-texto: #1E2A30;
+  --form-texto-suave: #4A5A63;
+  --form-linea: #D8E0E3;
+  --form-borde-campo: #BCC8CD;
+  --form-campo-fondo: #FFFFFF;
 }
   /* donde salen las tareas*/
   body {
@@ -436,5 +452,5 @@ background:var(--tablero-hover);
 #fila-nuevo-proyecto button:hover{
   background:color-mix(in srgb, var(--tablero-acento) 40%, transparent);
 
-  
+
 }

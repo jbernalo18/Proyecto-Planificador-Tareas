@@ -52,31 +52,39 @@ function mostrarResultado (campo, esValido, textoValido, textoError) {
 /**revisar cada campo: validan, muestran el mensaje y devuelven true/false*/
 function revisarNombre () {
     const esValido = validarTextoLargo(entradaNombre.value, minNombre);
-    mostrarResultado(errorNombre, esValido, "✓ Nombre válido", "X El nombre debe tener más de 8 caracteres");
+    mostrarResultado(errorNombre, esValido, "✓ Nombre válido", "⚠ El nombre debe tener más de 8 caracteres");
     return esValido;
 }
 
 function revisarDescripcion () {
-    const esValido = validarTextoLargo(entradaDescripcion.value, minDescripcion);
-    mostrarResultado(errorDescripcion, esValido, "✓ Descripción válida", "X La descripción debe tener más de 15 caracteres");
+const texto = entradaDescripcion.value.trim();
+
+    if (texto === "") {
+        errorDescripcion.textContent = "";
+        errorDescripcion.classList.remove("texto-error", "texto-exito");
+        return true;
+    }
+
+    const esValido = validarTextoLargo(texto, minDescripcion);
+    mostrarResultado(errorDescripcion, esValido, "✓ Descripción válida", "⚠ La descripción debe tener más de 15 caracteres");
     return esValido;
 }
 
 function revisarAsignado () {
     const esValido = validarTextoLargo(entradaAsignado.value, minAsignado);
-    mostrarResultado(errorAsignado, esValido, "✓ Responsable válido", "X El campo 'Asignado a' debe tener más de 8 caracteres");
+    mostrarResultado(errorAsignado, esValido, "✓ Responsable válido", "⚠ El campo 'Asignado a' debe tener más de 8 caracteres");
     return esValido;
 }
 
 function revisarFecha () {
     const esValido = validarFecha(entradaFecha.value);
-    mostrarResultado(errorFecha, esValido, "✓ Fecha válida", "X Debes elegir una fecha de entrega válida (hoy o en el futuro)");
+    mostrarResultado(errorFecha, esValido, "✓ Fecha válida", "⚠ Debes elegir una fecha de entrega válida (hoy o en el futuro)");
     return esValido;
 }
 
 function revisarEstado () {
     const esValido = validarEstado();
-    mostrarResultado(errorEstado, esValido, "✓ Estado seleccionado", "X Debes seleccionar un estado");
+    mostrarResultado(errorEstado, esValido, "✓ Estado seleccionado", "⚠ Debes seleccionar un estado");
     return esValido;
 }
 
