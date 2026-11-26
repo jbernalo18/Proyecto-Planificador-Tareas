@@ -121,9 +121,9 @@
     gap: 10px;
     padding: 12px 14px;
     background:
-      radial-gradient(circle at 85% 10%, color-mix(in srgb, #BED7F0 75%, transparent), transparent 45%),
-      radial-gradient(circle at 12% 92%, color-mix(in srgb, #B4E1E1 55%, transparent), transparent 40%),
-      linear-gradient(135deg, #DAD3EA 0%, #EAE6F2 42%, #F8F2E8 92%);
+    radial-gradient(circle at 85% 10%, color-mix(in srgb, #A9C8E8 75%, transparent), transparent 60%),
+    radial-gradient(circle at 12% 92%, color-mix(in srgb, #9DD3D3 55%, transparent), transparent 60%),
+    linear-gradient(135deg, #C9C0DE 0%, #D9D3E6 42%, #E9DFCF 92%);
     border: 1px solid color-mix(in srgb, #fff 90%, transparent);
     border-radius: 11px;
     box-shadow: 0 2px 8px color-mix(in srgb, var(--texto) 8%, transparent);
@@ -288,7 +288,7 @@
     gap: 15px;
     max-height: 65vh;
     overflow-y: auto;
-    padding: 4px;
+    padding: 4px 4px 14px;
     scrollbar-width: thin;
     scrollbar-color: rgba(255,255,255,.25) transparent;
   }
