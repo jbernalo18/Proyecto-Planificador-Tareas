@@ -485,7 +485,7 @@ background:var(--tablero-hover);
   inset:0;
   z-index:5;
   background:var(--tablero-overlay);
-  backdrop-filter:blur(3px);
+  backdrop-filter:blur(10px);
 }
 
 #fila-nuevo-proyecto button:hover{
