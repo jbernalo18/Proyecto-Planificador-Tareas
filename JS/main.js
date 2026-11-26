@@ -313,7 +313,7 @@ function aplicarTema(tema) {
     document.documentElement.setAttribute("data-tema", tema);
 
     if (tema === "claro") {
-        iconoTema.src = "../assets/iconos/icons_moon.svg";
+        iconoTema.src = "./assets/iconos/icons_moon.svg";
         iconoTema.alt = "Icono Luna Tema";
     } else {
         iconoTema.src = "./assets/iconos/icons_sun.svg";
