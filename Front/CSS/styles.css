@@ -14,13 +14,32 @@
   --tablero-overlay:color-mix(in srgb, #000 25%, transparent);
   --tablero-hover:color-mix(in srgb, #fff 10%, transparent);
 
-  --form-fondo: #182643;
-  --form-columna-der: #1E3052;
-  --form-texto: #F4F6FB;
-  --form-texto-suave: color-mix(in srgb, #F4F6FB 70%, transparent);
-  --form-linea: color-mix(in srgb, #FFFFFF 14%, transparent);
-  --form-borde-campo: color-mix(in srgb, #FFFFFF 22%, transparent);
-  --form-campo-fondo: #121D33;
+  --form-fondo: #252F4E;
+  --form-columna-der: color-mix(in srgb, #fff 4%, transparent);
+  --form-campo-fondo: #38435fee;
+  --form-borde-campo: color-mix(in srgb, #fff 28%, transparent);
+  --form-linea: color-mix(in srgb, #fff 12%, transparent);
+  --form-texto: #EAF0FA;
+  --form-texto-suave: color-mix(in srgb, #EAF0FA 70%, transparent);
+  --form-etiqueta-fondo: color-mix(in srgb, #6FE0C8 25%, transparent);
+  --form-etiqueta-borde: color-mix(in srgb, #6FE0C8 60%, transparent);
+  --form-chip-hover-fondo: color-mix(in srgb, #fff 10%, transparent);
+  --form-chip-hover-borde: color-mix(in srgb, #6FE0C8 60%, transparent);
+  --form-chip-activo-fondo: color-mix(in srgb, #6FE0C8 25%, transparent);
+  --form-chip-activo-borde: #6FE0C8;
+  --form-btn-primario-fondo: #F1F5FB;
+  --form-btn-primario-texto: #182643;
+  --form-btn-primario-hover-fondo: var(--verde-agua);
+  --form-btn-primario-hover-texto: #0F2426;
+
+  --form-btn-cancelar-fondo: transparent;
+  --form-btn-cancelar-texto: color-mix(in srgb, #EAF0FA 78%, transparent);
+  --form-btn-cancelar-borde: color-mix(in srgb, #EAF0FA 18%, transparent);
+  --form-btn-cancelar-hover-fondo: color-mix(in srgb, #EAF0FA 8%, transparent);
+  --form-btn-guardar-hover-bg: linear-gradient(135deg, #6FE0C8 0%, #1E7A76 100%);
+  --form-btn-guardar-hover-color: #0B1E22;
+  --form-btn-guardar-hover-sombra: 0 8px 20px color-mix(in srgb, #6FE0C8 35%, transparent);
+
   }
 
 [data-tema="claro"]{
@@ -36,6 +55,7 @@
   --tablero-overlay:color-mix(in srgb, #182643 15%, transparent);
   --tablero-hover:color-mix(in srgb, #182643 8%, transparent);
 
+
   --form-fondo: #FFFFFF;
   --form-columna-der: color-mix(in srgb, var(--verde-agua) 3%, transparent);
   --form-texto: #1E2A30;
@@ -43,6 +63,25 @@
   --form-linea: #D8E0E3;
   --form-borde-campo: #BCC8CD;
   --form-campo-fondo: #FFFFFF;
+  --form-etiqueta-fondo: var(--petroleo-suave);
+  --form-etiqueta-borde: transparent;
+  --form-chip-hover-fondo: var(--form-campo-fondo);
+  --form-chip-hover-borde: var(--petroleo);
+  --form-chip-activo-fondo: color-mix(in srgb, var(--petroleo) 20%, transparent);
+  --form-chip-activo-borde: var(--petroleo);
+  --form-btn-primario-fondo: var(--petroleo);
+  --form-btn-primario-texto: #FFFFFF;
+  --form-btn-primario-hover-fondo: var(--turquesa);
+  --form-btn-primario-hover-texto: #FFFFFF;
+
+  --form-btn-cancelar-fondo: transparent;
+  --form-btn-cancelar-texto: var(--form-texto-suave);
+  --form-btn-cancelar-borde: var(--form-linea);
+  --form-btn-cancelar-hover-fondo: color-mix(in srgb, var(--texto) 5%, transparent);
+  --form-btn-guardar-hover-bg: linear-gradient(135deg, var(--petroleo) 0%, var(--turquesa) 100%);
+  --form-btn-guardar-hover-color: #FFFFFF;
+  --form-btn-guardar-hover-sombra: 0 8px 20px color-mix(in srgb, var(--turquesa) 38%, transparent);
+
 }
   /* donde salen las tareas*/
   body {

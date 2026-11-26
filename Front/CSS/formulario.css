@@ -10,7 +10,7 @@
   --verde-agua:#5FA79A;
   --dorado:#D9A441;
   --ambar:#B9792B;
-  --rojo:#B3261E;
+  --rojo:#ff3f35;
   --radio:8px;
 }
 
@@ -36,13 +36,14 @@ button{
 
 /*formulario  ventana*/
 .formulario-seccion{
+  backdrop-filter:blur(3px);
   position:fixed;
   inset:0;
   display:none;
   justify-content:center;
   align-items:flex-start;
   padding:8px 16px;
-  background:color-mix(in srgb, var(--texto) 60%, transparent);
+  background:color-mix(in srgb, var(--texto) 40%, transparent);
   overflow-y:auto;
   z-index:100;
 }
@@ -60,7 +61,7 @@ button{
   color: var(--form-texto);
   border: 1px solid var(--form-linea);
   border-radius:16px;
-  box-shadow:0 8px 24px color-mix(in srgb, var(--texto) 8%, transparent);
+  box-shadow:0 8px 24px color-mix(in srgb, var(--texto) 90%, transparent);
 }
 
 /*franja de colores de arrib*/
@@ -68,7 +69,7 @@ button{
   content:"";
   display:block;
   height:5px;
-  background:linear-gradient(90deg,#26343A,#1F7FB5,#55C7E8,#D9A441,#B9792B);
+  background:linear-gradient(90deg,#e0c8ff,#1F7FB5,#55C7E8,#D9A441,#B9792B);
 }
 
 /*cabecera*/
@@ -141,6 +142,8 @@ textarea{
   border-radius:var(--radio);
 }
 
+
+
 input[type=text]:focus,
 input[type=date]:focus,
 textarea:focus{
@@ -149,11 +152,14 @@ textarea:focus{
   border:1.8px solid transparent;
   background:
     linear-gradient(var(--form-campo-fondo), var(--form-campo-fondo)) padding-box,
-    linear-gradient(135deg, #26343A, #55C7E8, #D9A441, #967BB6) border-box;
+    linear-gradient(135deg, #08668f, #b6e5f1, #D9A441, #967BB6) border-box;
 }
 .form-campo-nombre-tarjeta input{
   font-size:1.07rem;
   font-weight:300;
+}
+input[type=date]{
+  color-scheme: gray;
 }
 
 /* la descripcion se estira y ocupa el espacio que sobra */
@@ -198,13 +204,14 @@ textarea:focus{
 }
 
 .form-campo-estado-tarjeta label:hover{
-  border-color:var(--petroleo);
+  background:var(--form-chip-hover-fondo);
+  border-color:var(--form-chip-hover-borde);
 }
 
 .form-campo-estado-tarjeta label:has(input:checked){
   font-weight:600;
-  background:color-mix(in srgb, var(--petroleo) 20%, transparent);
-  border-color:var(--petroleo);
+  background:var(--form-chip-activo-fondo);
+  border-color:var(--form-chip-activo-borde);
 }
 
 /* el circulito del radio se esconde, el click lo recibe el label */
@@ -228,8 +235,8 @@ textarea:focus{
 #btn-crear-etiqueta{
   padding:6px 12px;
   font-size:0.8rem;
-  background:var(--petroleo-suave);
-  border:1px solid transparent;
+  background: var(--form-etiqueta-fondo);
+  border: 1px solid var(--form-etiqueta-borde);
   border-radius: 6px;
 }
 
@@ -325,36 +332,42 @@ textarea:focus{
 }
 
 .form-acciones{
-  grid-column:1/-1;
-  display:flex;
-  justify-content:flex-end;
-  gap:12px;
-  padding:16px 32px;
-  border-top:1px solid var(--form-linea);
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 32px;
+  border-top: 1px solid var(--form-linea);
 }
 
 .form-acciones button{
-  min-height:20px;
-  padding:6px 12px;
+  min-height: 38px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
 }
-
+.form-acciones button:focus-visible {
+  outline: 2px solid var(--tablero-acento);
+  outline-offset: 2px;
+}
 .btn-cancelar{
-  color:var(--texto-suave);
-  background:var(--fondo-pagina);
-  border:1px solid transparent;
-  border-radius: 6px;
+  background: var(--form-btn-cancelar-fondo);
+  color: var(--form-btn-cancelar-texto);
+  border: 1px solid var(--form-btn-cancelar-borde);
 }
 
 .btn-cancelar:hover{
-  border-color:var(--linea);
-  transform:translateY(-2px);
+  background: var(--form-btn-cancelar-hover-fondo);
+  color: var(--form-texto);
+  transform: translateY(-1px);
 }
 
 #btn-crear{
-  color:#fff;
-  background:var(--petroleo);
-  border:1px solid var(--petroleo);
-  border-radius: 6px;
+  background: var(--form-btn-primario-fondo);
+  color: var(--form-btn-primario-texto);
+  border: 1px solid transparent;
 
 }
 
@@ -389,7 +402,7 @@ textarea:focus{
 }
 
 .texto-exito{
-  color:#1E7A4C;
+  color:#82ddb0;
 }
 
 
@@ -411,10 +424,10 @@ textarea:focus{
 }
 
 #btn-crear:hover{
-  background:var(--turquesa);
-  border-color:var(--turquesa);
-  transform:translateY(-2px);
-  box-shadow:0 8px 20px color-mix(in srgb, var(--turquesa) 38%, transparent);
+  background: var(--form-btn-guardar-hover-bg);
+  color: var(--form-btn-guardar-hover-color);
+  transform: translateY(-2px);
+  box-shadow: var(--form-btn-guardar-hover-sombra);
 }
 
 
