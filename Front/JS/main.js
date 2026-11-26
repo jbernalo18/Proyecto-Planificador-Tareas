@@ -55,6 +55,7 @@ botonTema.addEventListener("click", () => {
 
 botonCrearPrimerProyecto.addEventListener("click", () => {
     listaProyectos.classList.remove("lista-oculta");
+    overlaySelector.classList.remove("lista-oculta");
     botonCrearProyecto.click();
 });
 
@@ -292,7 +293,7 @@ if (proyectoAct) {
 //FUNCIONES
 
 function seleccionarProyecto(proyecto) {
-    mensajeBienvenida.classList.add("mensaje-bienvenida-oculto");
+mensajeBienvenida.classList.add("mensaje-bienvenida-oculto");
     btnAbrirFormulario.disabled = false;
     btnAbrirFormulario.title = "";
     proyectoAct = proyecto;
@@ -300,8 +301,7 @@ function seleccionarProyecto(proyecto) {
     columnas = pintarColumnas(proyectoAct, contenedorTareas);
     proyectoAct.gestorTareas.load();
     renderizarTareas(proyectoAct.gestorTareas.getTodasTareas(), columnas);
-    listaProyectos.classList.add("lista-oculta");
-    overlaySelector.classList.add("lista-oculta");
+    cerrarSelector();
 }
 
 function cerrarSelector() {
