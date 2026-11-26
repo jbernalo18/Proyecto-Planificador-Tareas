@@ -1,0 +1,8 @@
+node_modules
+.vscode
+.git
+package.json
+package-lock.json
+README.md
+wrangler.jsonc
+.assetsignore
