@@ -316,7 +316,7 @@ function aplicarTema(tema) {
         iconoTema.src = "../assets/iconos/icons_moon.svg";
         iconoTema.alt = "Icono Luna Tema";
     } else {
-        iconoTema.src = "../assets/iconos/icons_sun.svg";
+        iconoTema.src = "./assets/iconos/icons_sun.svg";
         iconoTema.alt = "Icono Sol Tema";
     }
 }
