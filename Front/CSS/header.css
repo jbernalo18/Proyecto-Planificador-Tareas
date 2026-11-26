@@ -71,14 +71,15 @@ button:focus-visible{
 
 .boton-tema-header{
     border: 1px solid color-mix(in srgb, var(--linea) 30%, transparent) ;
-    padding: 10px 10px;
-    height: 15px;
-    width: 15px;
+    padding: 0;
+    height: 30px;
+    width: 30px;
     border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    
 
 }
 .boton-tema-header:hover{

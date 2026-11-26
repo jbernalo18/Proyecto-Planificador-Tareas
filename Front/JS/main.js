@@ -21,6 +21,11 @@ const botonCrearPrimerProyecto = document.getElementById("btn-crear-primer-proye
 const filaNuevoProyecto = document.getElementById("fila-nuevo-proyecto");
 const campoNuevoProyecto = document.getElementById("campo-nuevo-proyecto");
 const botonConfirmarProyecto = document.getElementById("btn-confirmar-crear-proyecto");
+const overlaySelector = document.getElementById("overlay-selector");
+const botonTema = document.querySelector(".boton-tema-header");
+const iconoTema = botonTema.querySelector("img");
+
+
 let idEdicion = null;
 const paletaEtiqueta = [    
     "linear-gradient(135deg, #7DB8FF80, #2563EB80)", // azul eléctrico
@@ -38,8 +43,15 @@ const paletaEtiqueta = [
     ]
 
 
+aplicarTema(localStorage.getItem("tema") || "oscuro");
 
 //listeners inicio
+
+botonTema.addEventListener("click", () => {
+    const nuevoTema = document.documentElement.getAttribute("data-tema") === "claro" ? "oscuro" : "claro";
+    aplicarTema(nuevoTema);
+    localStorage.setItem("tema", nuevoTema);
+});
 
 botonCrearPrimerProyecto.addEventListener("click", () => {
     listaProyectos.classList.remove("lista-oculta");
@@ -47,8 +59,17 @@ botonCrearPrimerProyecto.addEventListener("click", () => {
 });
 
 botonGestorProyector.addEventListener("click",()=>{
+
 listaProyectos.classList.toggle("lista-oculta");
+overlaySelector.classList.toggle("lista-oculta", listaProyectos.classList.contains("lista-oculta"));
 });
+
+overlaySelector.addEventListener("click", cerrarSelector);
+
+document.addEventListener("keydown",(e)=>{
+    if (e.key==="Escape") {
+        cerrarSelector();}
+})
 
 botonCrearProyecto.addEventListener("click", () => {
     filaNuevoProyecto.classList.remove("lista-oculta");
@@ -273,4 +294,22 @@ function seleccionarProyecto(proyecto) {
     proyectoAct.gestorTareas.load();
     renderizarTareas(proyectoAct.gestorTareas.getTodasTareas(), columnas);
     listaProyectos.classList.add("lista-oculta");
+    overlaySelector.classList.add("lista-oculta");
+}
+
+function cerrarSelector() {
+    listaProyectos.classList.add("lista-oculta");
+    overlaySelector.classList.add("lista-oculta");
+}
+
+function aplicarTema(tema) {
+    document.documentElement.setAttribute("data-tema", tema);
+
+    if (tema === "claro") {
+        iconoTema.src = "../assets/iconos/icons_moon.svg";
+        iconoTema.alt = "Icono Luna Tema";
+    } else {
+        iconoTema.src = "../assets/iconos/icons_sun.svg";
+        iconoTema.alt = "Icono Sol Tema";
+    }
 }

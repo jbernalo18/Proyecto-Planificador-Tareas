@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-tema="claro">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +21,7 @@
             <div class="div-der-header">
                 <a href="#Inicio" class="inicio-header">Inicio</a>
                 <a href="#Mi Cuenta" class="mi-cuenta-header">Mi Cuenta</a>
-                <button class="boton-tema-header"><img src="../assets/iconos/icons_sun.svg" alt="Icono Sol Tema"></button>
+                <button class="boton-tema-header"><img src="../assets/iconos/icons_moon.svg" alt="Icono Luna Tema Oscuro"></button>
                 <button class="boton-iniciar-sesion-header">Iniciar Sesión</button>
             </div>
         </div>
@@ -113,6 +113,7 @@
                     <div class="tareas-div">
 
                     <div class="selector-proyecto">
+                        <div id="overlay-selector" class="lista-oculta overlay-selector"></div>
                         <button type="button" id="btn-selector" aria-expanded="false" aria-controls="lista-proyectos">
                             <span class="punto"></span>
                             <span id="nombre-proyecto-actual">Selecciona un proyecto</span> ▾
@@ -124,7 +125,7 @@
                         </ul>
                         <button type="button" id="btn-nuevo-proyecto">+ Nuevo proyecto</button>
                         <div id="fila-nuevo-proyecto" class="lista-oculta">
-                        <input type="text" id="campo-nuevo-proyecto" placeholder="Nombre del proyecto">
+                        <input type="text" id="campo-nuevo-proyecto" placeholder="Nombre proyecto">
                         <button type="button" id="btn-confirmar-crear-proyecto">✓</button>
                         </div>
                         </div>
