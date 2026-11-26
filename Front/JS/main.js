@@ -16,6 +16,11 @@ const botonGestorProyector = document.getElementById("btn-selector");
 const listaProyectos = document.getElementById("lista-proyectos");
 const botonCrearProyecto = document.getElementById("btn-nuevo-proyecto");
 const nombreProyectoActual = document.getElementById("nombre-proyecto-actual");
+const mensajeBienvenida = document.getElementById("mensaje-bienvenida");
+const botonCrearPrimerProyecto = document.getElementById("btn-crear-primer-proyecto");
+const filaNuevoProyecto = document.getElementById("fila-nuevo-proyecto");
+const campoNuevoProyecto = document.getElementById("campo-nuevo-proyecto");
+const botonConfirmarProyecto = document.getElementById("btn-confirmar-crear-proyecto");
 let idEdicion = null;
 const paletaEtiqueta = [    
     "linear-gradient(135deg, #7DB8FF80, #2563EB80)", // azul eléctrico
@@ -35,48 +40,48 @@ const paletaEtiqueta = [
 
 
 //listeners inicio
+
+botonCrearPrimerProyecto.addEventListener("click", () => {
+    listaProyectos.classList.remove("lista-oculta");
+    botonCrearProyecto.click();
+});
+
 botonGestorProyector.addEventListener("click",()=>{
 listaProyectos.classList.toggle("lista-oculta");
 });
 
-botonCrearProyecto.addEventListener("click",()=>{
-    const divCrearProyecto = document.createElement("div");
-    const campoCrearProyecto =  document.createElement("input");
-     campoCrearProyecto.type="text";
-    const checkCrearProyecto = document.createElement("button");
-    checkCrearProyecto.id  = "btn-confirmar-crear-proyecto";
-    checkCrearProyecto.textContent="✓";
-    checkCrearProyecto.type = "button"
-    divCrearProyecto.append(campoCrearProyecto,checkCrearProyecto);
-    listaProyectos.append(divCrearProyecto)
-    checkCrearProyecto.addEventListener("click", ()=>{
-        let nombreProyectoConfirmado=  campoCrearProyecto.value.trim();
-        console.log(nombreProyectoConfirmado)
-        if(nombreProyectoConfirmado===""){
-            return;
-        }
+botonCrearProyecto.addEventListener("click", () => {
+    filaNuevoProyecto.classList.remove("lista-oculta");
+    campoNuevoProyecto.focus();
+});
 
-        const nuevoProyecto = new Proyecto(nombreProyectoConfirmado,colorLabradorita)
-        proyectos.push(nuevoProyecto);
-        divCrearProyecto.remove()
-        const itemListaProyecto = document.createElement("li");
-        itemListaProyecto.style.listStyle = "none";
-        const botonProyecto = document.createElement("button");
-        const spanPunto = document.createElement("span");
-        spanPunto.classList.add("punto");
-        botonProyecto.append(spanPunto, " ", nombreProyectoConfirmado);
-        itemListaProyecto.append(botonProyecto);
-        botonCrearProyecto.before(itemListaProyecto);
+botonConfirmarProyecto.addEventListener("click", () => {
+    const nombreProyectoConfirmado = campoNuevoProyecto.value.trim();
+    if (nombreProyectoConfirmado === "") {
+        return;
+    }
 
-        botonProyecto.addEventListener("click", () => {
-            seleccionarProyecto(nuevoProyecto);
-        });
+    const nuevoProyecto = new Proyecto(nombreProyectoConfirmado, colorLabradorita);
+    proyectos.push(nuevoProyecto);
 
-        seleccionarProyecto(nuevoProyecto); 
+    campoNuevoProyecto.value = "";
+    filaNuevoProyecto.classList.add("lista-oculta");
 
-    })
+    const itemListaProyecto = document.createElement("li");
+    itemListaProyecto.style.listStyle = "none";
+    const botonProyecto = document.createElement("button");
+    const spanPunto = document.createElement("span");
+    spanPunto.classList.add("punto");
+    botonProyecto.append(spanPunto, " ", nombreProyectoConfirmado);
+    itemListaProyecto.append(botonProyecto);
+    botonCrearProyecto.before(itemListaProyecto);
 
-})
+    botonProyecto.addEventListener("click", () => {
+        seleccionarProyecto(nuevoProyecto);
+    });
+
+    seleccionarProyecto(nuevoProyecto);
+});
 
 
 //listeners  form
@@ -259,6 +264,7 @@ if (proyectoAct) {
 //FUNCIONES
 
 function seleccionarProyecto(proyecto) {
+    mensajeBienvenida.classList.add("mensaje-bienvenida-oculto");
     btnAbrirFormulario.disabled = false;
     btnAbrirFormulario.title = "";
     proyectoAct = proyecto;

@@ -2,7 +2,7 @@ import { test, expect } from "@jest/globals";
 import { TaskManager } from "../JS/taskManager.js";
 
 test ('agregarTarea guarda una tarea en la lista',()=>{
-const taskManager = new TaskManager();
+const taskManager = new TaskManager("prueba");
 const tarea = {
     nombre: "Maquetación del tablero",
     descripcion: "Estructurar las columnas principales",
@@ -17,7 +17,7 @@ expect(taskManager.tareas.length).toBe(1);
 });
 
 test ('borrarTarea elimina la tarea de la lista',()=>{
-const taskManager = new TaskManager();
+const taskManager = new TaskManager("prueba");
 const tarea = {
     nombre: "Maquetación del tablero",
     descripcion: "Estructurar las columnas principales",
@@ -35,7 +35,7 @@ expect(taskManager.tareas.length).toBe(0);
 
 
 test('editarTarea cambia el nombre y el estado de la tarea', () => {
-const taskManager = new TaskManager();
+const taskManager = new TaskManager("prueba");
 const tarea = {
     nombre: "Maquetación del tablero",
     descripcion: "Estructurar las columnas principales",
@@ -62,7 +62,7 @@ expect(taskManager.tareas[0].estado).toBe("EN PROCESO");
 });
 
 test('asignarTarea cambia el responsable de la tarea', () => {
-const taskManager = new TaskManager();
+const taskManager = new TaskManager("prueba");
 const tarea = {
     nombre: "Maquetación del tablero",
     descripcion: "Estructurar las columnas principales",

@@ -115,7 +115,7 @@
                     <div class="selector-proyecto">
                         <button type="button" id="btn-selector" aria-expanded="false" aria-controls="lista-proyectos">
                             <span class="punto"></span>
-                            <span id="nombre-proyecto-actual">Planificador</span> ▾
+                            <span id="nombre-proyecto-actual">Selecciona un proyecto</span> ▾
                         </button>
                         <div id="lista-proyectos" class="lista-oculta" >
                         <p>Mis proyectos</p>
@@ -123,11 +123,22 @@
 
                         </ul>
                         <button type="button" id="btn-nuevo-proyecto">+ Nuevo proyecto</button>
+                        <div id="fila-nuevo-proyecto" class="lista-oculta">
+                        <input type="text" id="campo-nuevo-proyecto" placeholder="Nombre del proyecto">
+                        <button type="button" id="btn-confirmar-crear-proyecto">✓</button>
+                        </div>
                         </div>
                     </div>
 
-                <button type="button" id="btn-abrir-formulario" disabled title="Crea un proyecto primero">+ Nueva tarjeta</button>                    </div>
-                <div id="contenedor-tareas" class="contenedor-tareas"></div>
+                <button type="button" id="btn-abrir-formulario" class="btn-primario" disabled title="Crea un proyecto primero">+ Nueva tarjeta</button>  
+                </div>             
+                 <div id="contenedor-tareas" class="contenedor-tareas"></div>
+
+                <div id="mensaje-bienvenida" class="mensaje-bienvenida">
+                    <h2>¡Te damos la bienvenida a Ládora!</h2>
+                    <p>Aún no tienes proyectos creados.</p>
+                    <button type="button" id="btn-crear-primer-proyecto" class="btn-primario">+ Crea tu primer proyecto</button>
+                </div>
             </section>
 
         <script type="module" src="./JS/main.js"></script></body>

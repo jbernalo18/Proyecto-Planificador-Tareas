@@ -354,7 +354,7 @@ textarea:focus{
 
 }
 
-btn-crear:hover{
+#btn-crear:hover{
   background:var(--turquesa);
   border-color:var(--turquesa);
   transform:translateY(-2px);
@@ -389,7 +389,7 @@ btn-crear:hover{
 }
 
 
-#btn-abrir-formulario{
+.btn-primario{
   margin-bottom:10px;
   padding:6px 14px;
   color:#fff;
@@ -399,7 +399,7 @@ btn-crear:hover{
   background-color: color-mix(in srgb, var(--petroleo) 50%, var(--turquesa) 50%);
 }
 
-#btn-abrir-formulario:hover{
+.btn-primario:hover:not(:disabled){
   background: color-mix(in srgb, var(--turquesa) 50%, var(--petroleo) 50%);
   border-color:var(--turquesa);
   transform:translateY(-2px); 

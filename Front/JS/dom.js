@@ -36,9 +36,9 @@ export function pintarTarjeta(tarea){
     descripcionTarjeta.classList.add("tarjeta-descripcion"); 
     descripcionTarjeta.title = tarea.descripcion;   
     //estado
-    const estadoTarjeta= document.createElement("span");
+    /*const estadoTarjeta= document.createElement("span");
     estadoTarjeta.classList.add("tarjeta-estado");
-    estadoTarjeta.textContent=tarea.estado;
+    estadoTarjeta.textContent=tarea.estado;*/
     //asignadoa
     const asignacionTarjeta = document.createElement("p");
     asignacionTarjeta.textContent="Asignado a: " +tarea.asignadoA;
@@ -55,9 +55,9 @@ export function pintarTarjeta(tarea){
     textoPrioridad.textContent = tarea.prioridad;
     prioridadTarjeta.append(puntoPrioridad, textoPrioridad);
 
-    const filaFecha = document.createElement("div");
+    /*const filaFecha = document.createElement("div");
     filaFecha.classList.add("tarjeta-fecha-fila");
-    filaFecha.append(fechaEntrega, prioridadTarjeta);
+    filaFecha.append(fechaEntrega, prioridadTarjeta);*/
 
 
     //circulo de seleccion 
@@ -81,8 +81,8 @@ export function pintarTarjeta(tarea){
 
     const botonYEstado=document.createElement("div");
     botonYEstado.classList.add("tarjeta-eliminar-estado");
-    botonYEstado.append(estadoTarjeta, botonEliminar);
-    contenido.append(filaTitulo,contenedorEtiquetas, descripcionTarjeta, asignacionTarjeta, filaFecha, botonYEstado);
+    botonYEstado.append(prioridadTarjeta,botonEliminar);
+    contenido.append(filaTitulo,contenedorEtiquetas, descripcionTarjeta, asignacionTarjeta, fechaEntrega, botonYEstado);
     tarjeta.append(circulo, contenido);
     return tarjeta;
 
